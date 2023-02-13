@@ -11,7 +11,18 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/main.js', 'public/js')
-    .postCss('resources/css/main.css', 'public/css', [
-        //
-    ]);
+mix.js('resources/js/app.js', 'public/js')
+    .js('resources/js/admin/app.min.js', 'public/js/admin')
+    .js('resources/js/admin/vendor.min.js', 'public/js/admin');
+
+mix.copy('resources/js/admin/main.js', 'public/js/admin')
+//css
+mix.copy('resources/css/app.min.css', 'public/css')
+mix.copy('resources/css/icons.min.css', 'public/css')
+
+mix.copy('resources/css/admin/main.css', 'public/css/admin')
+
+
+
+//images
+mix.copy('resources/images', 'public/images')

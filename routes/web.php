@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\admin\CategoriesController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\admin\HomeAdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return redirect(route('admin.home'));
+});
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/trang-chu', [HomeAdminController::class, 'index'])->name('admin.home');
+    Route::get('/the-loai', [CategoriesController::class, 'index'])->name('admin.categories');
+    Route::get('/them-the-loai', [CategoriesController::class, 'create'])->name('admin.categories.create');
 });
