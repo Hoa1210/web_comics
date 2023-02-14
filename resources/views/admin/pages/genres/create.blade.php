@@ -23,7 +23,8 @@
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane show active" id="input-types-preview">
-                        <form>
+                        <form action="{{route('admin.categories.store')}}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="mb-3">
@@ -33,7 +34,7 @@
 
                                     <div class="mb-3">
                                         <label for="slug" class="form-label">Slug</label>
-                                        <input type="email" id="slug" name="slug" class="form-control" placeholder="Slug thể loại">
+                                        <input type="text" id="slug" name="slug" class="form-control" placeholder="Slug thể loại">
                                     </div>
 
                                     <label for="open" class=" form-label">Trạng thái</label>

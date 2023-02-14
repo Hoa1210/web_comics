@@ -1,4 +1,4 @@
- <!-- ========== Left Sidebar Start ========== -->
+
  <div class="leftside-menu">
 
     <!-- LOGO -->
@@ -24,7 +24,6 @@
 
     <div class="h-100" id="leftside-menu-container" data-simplebar>
 
-        <!--- Sidemenu -->
         <ul class="side-nav">
 
             <li class="side-nav-item">
@@ -35,27 +34,40 @@
                 </a>
             </li>
             <li class="side-nav-item ">
-                <a data-bs-toggle="collapse" href="#categories" aria-expanded="false" aria-controls="categories" class="side-nav-link">
+                <a data-bs-toggle="collapse" href="#genres" aria-expanded="false" aria-controls="genres" class="side-nav-link">
                     <i class="uil uil-tachometer-fast"></i>
                     <span class="badge bg-danger text-white float-end">New</span>
                     <span> Thể loại </span>
                 </a>
-                <div class="collapse" id="categories">
+                <div class="collapse" id="genres">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="{{route('admin.categories')}}" >Danh sách thể loại</a>
+                            <a href="{{route('admin.genres')}}" >Danh sách thể loại</a>
                         </li>
                         <li>
-                            <a href="{{route('admin.categories.create')}}">Thêm thể loại</a>
+                            <a href="{{route('admin.genres.create')}}">Thêm thể loại</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="side-nav-item ">
+                <a data-bs-toggle="collapse" href="#comics" aria-expanded="false" aria-controls="comics" class="side-nav-link">
+                    <i class="uil uil-tachometer-fast"></i>
+                    <span class="badge bg-danger text-white float-end">4</span>
+                    <span> Truyện </span>
+                </a>
+                <div class="collapse" id="comics">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="{{route('admin.comics')}}" >Danh sách truyện</a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.comics.create')}}">Thêm truyện</a>
                         </li>
                     </ul>
                 </div>
             </li>
         </ul>
         <div class="clearfix"></div>
-
     </div>
-    <!-- Sidebar -left -->
-
 </div>
-<!-- Left Sidebar End -->
