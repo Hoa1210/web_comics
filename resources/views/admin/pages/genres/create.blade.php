@@ -23,7 +23,7 @@
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane show active" id="input-types-preview">
-                        <form action="{{route('admin.categories.store')}}" method="POST">
+                        <form action="{{route('admin.genres.store')}}" method="POST">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6">

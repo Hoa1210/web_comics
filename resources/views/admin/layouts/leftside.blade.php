@@ -2,13 +2,12 @@
  <div class="leftside-menu">
 
     <!-- LOGO -->
-    <a href="index.html" class="logo text-center logo-light mt-2">
+    <a href="{{route('admin.home')}}" class="logo text-center logo-light ">
         <span class="logo-lg">
-            {{-- <img src="assets/images/logo.png" alt="" height="16"> --}}
-            <h3>ADMIN</h3>
+            <img src="{{asset('images/logo/logo-1.png')}}" alt="" height="70">
         </span>
         <span class="logo-sm">
-            {{-- <img src="assets/images/logo_sm.png" alt="" height="16"> --}}
+            <img src="{{asset('images/logo/logo.png')}}" alt="" height="40">
         </span>
     </a>
 

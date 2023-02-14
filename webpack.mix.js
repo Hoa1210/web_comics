@@ -11,11 +11,12 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .js('resources/js/admin/app.min.js', 'public/js/admin')
-    .js('resources/js/admin/vendor.min.js', 'public/js/admin');
-
+mix.js('resources/js/app.js', 'public/js');
+mix.copy('resources/js/admin/app.min.js', 'public/js/admin')
+mix.copy('resources/js/admin/vendor.min.js', 'public/js/admin')
 mix.copy('resources/js/admin/main.js', 'public/js/admin')
+// mix.copy('resources/js/vendor/dropzone.min.js', 'public/js/vendor')
+// mix.copy('resources/js/ui/component.fileupload.js', 'public/js/ui')
 //css
 mix.copy('resources/css/app.min.css', 'public/css')
 mix.copy('resources/css/icons.min.css', 'public/css')

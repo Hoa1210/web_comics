@@ -18,8 +18,6 @@ class CreateComicsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('author')->nullable();
-            $table->unsignedBigInteger('genre_id');
-            $table->foreign('genre_id')->references('id')->on('genres');
             $table->text('img_path');
             $table->tinyInteger('is_public')->default(1);
             $table->date('release_date')->nullable();
