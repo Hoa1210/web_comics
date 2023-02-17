@@ -17,6 +17,8 @@ class CreateImagesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('path');
+            $table->unsignedBigInteger('chapter_id')->nullable();
+            $table->foreign('chapter_id')->references('id')->on('chapters');
         });
     }
 

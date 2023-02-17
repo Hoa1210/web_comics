@@ -27,4 +27,27 @@ function changKeyWordToSlug(keywords) {
     keywords = keywords.replace(/\@\-|\-\@|\@/gi, "");
     //In keywords ra textbox có id “keywords”
     return keywords;
-} 
+}
+$(document).ready(function () {
+    "use strict";
+    $("#basic-datatable").DataTable({
+        columnDefs: [
+            {
+                'targets': -1,
+                'orderable': false,
+            },
+        ],
+        keys: !0,
+        language: {
+            paginate: {
+                previous: "<i class='mdi mdi-chevron-left'>",
+                next: "<i class='mdi mdi-chevron-right'>",
+            },
+        },
+        drawCallback: function () {
+            $(".dataTables_paginate > .pagination").addClass(
+                "pagination-rounded"
+            );
+        },
+    });
+});

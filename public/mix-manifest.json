@@ -1,11 +1,11 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/js/admin/app.min.js": "/js/admin/app.min.js",
-    "/js/admin/vendor.min.js": "/js/admin/vendor.min.js",
     "/js/admin/main.js": "/js/admin/main.js",
-    "/js/vendor/dropzone.min.js": "/js/vendor/dropzone.min.js",
-    "/js/ui/component.fileupload.js": "/js/ui/component.fileupload.js",
+    "/js/app.min.js": "/js/app.min.js",
+    "/js/vendor.min.js": "/js/vendor.min.js",
+    "/js/vendor/dataTables.bootstrap5.js": "/js/vendor/dataTables.bootstrap5.js",
+    "/js/vendor/jquery.dataTables.min.js": "/js/vendor/jquery.dataTables.min.js",
     "/css/app.min.css": "/css/app.min.css",
     "/css/icons.min.css": "/css/icons.min.css",
-    "/css/admin/main.css": "/css/admin/main.css"
+    "/css/admin/main.css": "/css/admin/main.css",
+    "/css/vendor/dataTables.bootstrap5.css": "/css/vendor/dataTables.bootstrap5.css"
 }

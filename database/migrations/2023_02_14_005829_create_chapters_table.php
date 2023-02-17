@@ -15,11 +15,10 @@ class CreateChaptersTable extends Migration
     {
         Schema::create('chapters', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('slug');
             $table->unsignedBigInteger('comic_id')->nullable();
             $table->foreign('comic_id')->references('id')->on('comics');
-            $table->string('name');
-            $table->unsignedBigInteger('image_id')->nullable();
-            $table->foreign('image_id')->references('id')->on('images');
             $table->timestamps();
         });
     }

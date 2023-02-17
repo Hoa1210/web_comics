@@ -63,6 +63,9 @@
                         <li>
                             <a href="{{route('admin.comics.create')}}">Thêm truyện</a>
                         </li>
+                        <li>
+                            <a href="{{route('admin.chapter.create')}}">Thêm chapter</a>
+                        </li>
                     </ul>
                 </div>
             </li>

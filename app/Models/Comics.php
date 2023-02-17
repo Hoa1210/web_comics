@@ -30,7 +30,7 @@ class Comics extends Model
     {
         if ($request->hasFile('img_path')) {
             $name = date('mdYHis') . uniqid() . '.' . $request->file('img_path')->getClientOriginalExtension();
-            $path = Storage::putFileAs('images/comics', $request->file('img_path'), $name, 'public');
+            $path = Storage::putFileAs('public/images/comics', $request->file('img_path'), $name, 'public');
         }
         $comics = Comics::create([
             'name' => $request->name,

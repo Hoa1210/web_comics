@@ -19,9 +19,10 @@
 
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="{{asset('js/admin/main.js')}}"></script>
-    <script src="{{asset('js/admin/vendor.min.js')}}"></script>
-    <script src="{{asset('js/admin/app.min.js')}}"></script>
-
+    <script src="{{asset('js/vendor.min.js')}}"></script>
+    <script src="{{asset('js/app.min.js')}}"></script>
+    <script src="{{asset('js/vendor/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('js/vendor/dataTables.bootstrap5.js')}}"></script>
     @stack('js')
 </body>
 

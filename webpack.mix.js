@@ -11,17 +11,20 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js');
-mix.copy('resources/js/admin/app.min.js', 'public/js/admin')
-mix.copy('resources/js/admin/vendor.min.js', 'public/js/admin')
 mix.copy('resources/js/admin/main.js', 'public/js/admin')
-// mix.copy('resources/js/vendor/dropzone.min.js', 'public/js/vendor')
-// mix.copy('resources/js/ui/component.fileupload.js', 'public/js/ui')
+
+mix.copy('resources/js/app.min.js', 'public/js')
+mix.copy('resources/js/vendor.min.js', 'public/js')
+
+mix.copy('resources/js/vendor/dataTables.bootstrap5.js', 'public/js/vendor')
+mix.copy('resources/js/vendor/jquery.dataTables.min.js', 'public/js/vendor')
 //css
 mix.copy('resources/css/app.min.css', 'public/css')
 mix.copy('resources/css/icons.min.css', 'public/css')
 
 mix.copy('resources/css/admin/main.css', 'public/css/admin')
+
+mix.copy('resources/css/vendor/dataTables.bootstrap5.css', 'public/css/vendor')
 
 
 

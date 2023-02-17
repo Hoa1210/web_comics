@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\ChapterController;
 use App\Http\Controllers\admin\ComicsController;
 use App\Http\Controllers\admin\GenresController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/them-the-loai', [GenresController::class, 'store'])->name('admin.genres.store');
 
     Route::get('/truyen', [ComicsController::class, 'index'])->name('admin.comics');
-    Route::get('them-truyen', [ComicsController::class, 'create'])->name('admin.comics.create');
-    Route::post('them-truyen', [ComicsController::class, 'store'])->name('admin.comics.store');
+    Route::get('/them-truyen', [ComicsController::class, 'create'])->name('admin.comics.create');
+    Route::post('/them-truyen', [ComicsController::class, 'store'])->name('admin.comics.store');
+
+    Route::get('/them-chapter', [ComicsController::class, 'chapter_create'])->name('admin.chapter.create');
+    Route::post('/them-chapter', [ComicsController::class, 'chapter_store'])->name('admin.chapter.store');
 });
