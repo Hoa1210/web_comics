@@ -26,6 +26,11 @@ class Genres extends Model
     ];
     public $timestamps = true;
 
+    public function comics()
+    {
+        return $this->belongsToMany(Comics::class);
+    }
+
     public function createGenres($request){
         $genres = Genres::create([
             'name' => $request->name,

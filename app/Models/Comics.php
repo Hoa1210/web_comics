@@ -26,6 +26,11 @@ class Comics extends Model
 
     public $timestamps = true;
 
+    public function genres()
+    {
+        return $this->belongsToMany(Genres::class, 'comic_genre', 'comic_id','genre_id');
+    }
+
     public function createComics($request)
     {
         if ($request->hasFile('img_path')) {

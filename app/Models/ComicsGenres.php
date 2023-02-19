@@ -16,10 +16,4 @@ class ComicsGenres extends Model
     ];
 
     public $timestamps = false;
-
-    public function ComicGenre()
-    {
-        return $this->hasManyThrough(Genre::class, ComicGenre::class, 'comic_id', 'id', 'id', 'genre_id');
-    }
-
 }

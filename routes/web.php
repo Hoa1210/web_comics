@@ -5,6 +5,8 @@ use App\Http\Controllers\admin\ComicsController;
 use App\Http\Controllers\admin\GenresController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\HomeAdminController;
+use App\Http\Controllers\client\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,10 +18,8 @@ use App\Http\Controllers\admin\HomeAdminController;
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    return redirect(route('admin.home'));
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/{comic}', [HomeController::class, 'detailComics'])->name('detailComics');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/trang-chu', [HomeAdminController::class, 'index'])->name('admin.home');
