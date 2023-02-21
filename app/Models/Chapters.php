@@ -22,6 +22,10 @@ class Chapters extends Model
 
     public $timestamps = true;
 
+    public function images(){
+        return $this->hasMany(Images::class, 'chapter_id');
+    }
+
     public function uploadImage($request)
     {
         foreach ($request->img_path as $value) {

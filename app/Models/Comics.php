@@ -31,6 +31,10 @@ class Comics extends Model
         return $this->belongsToMany(Genres::class, 'comic_genre', 'comic_id','genre_id');
     }
 
+    public function chapters(){
+        return $this->hasMany(Chapters::class, 'comic_id');
+    }
+
     public function createComics($request)
     {
         if ($request->hasFile('img_path')) {

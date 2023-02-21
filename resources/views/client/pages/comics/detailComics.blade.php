@@ -3,149 +3,120 @@
 <section id="main-container" class="main-container">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <div class="ts-intro">
-                    <h2 class="into-title">Đọc truyện</h2>
-                    <h3 class="into-sub-title">{{$comic->name}}</h3>
-                    <div class="anime">
-                        <ul class="d-flex flex-wrap">
-                            <li class="mr-1">
-                                <h5>Other name: </h5>
-                            </li>
-                            <li><a href="#">Go-toubun No Hanayome S2</a> ,</li>
-                            <li><a href="#">五等分の花嫁∬</a> ,</li>
-                            <li><a href="#">The Five Wedded Brides 2nd Season</a> ,</li>
-                            <li><a href="#">5-Toubun No Hanayome 2</a> ,</li>
-                            <li><a href="#">The Quintessential Quintuplets 2nd Season </a> ,</li>
-                            <li><a href="#">5-toubun No Hanayome 2nd Season</a></li>
-                        </ul>
+            <div class="col-lg-8">
+                <h3 class="into-sub-title text-align">{{$detailComic->name}}</h3>
+                <h2 class="into-title text-align">Cập nhật lúc : {{$detailComic->updated_at}}</h2>
+                <div class="ts-intro row mt-5">
+                    <div class="col-lg-4">
+                        <img src="{{Storage::url($detailComic->img_path)}}" width="100%" >
                     </div>
-                    <div class="anime">
+                    <div class="anime col-lg-8">
                         <ul class="d-flex flex-wrap">
                             <li class="mr-1">
-                                <h5>Genres: </h5>
-                            </li>
-                            <li><a href="#">Comedy </a> ,</li>
-                            <li><a href="#">Romance</a></li>
-                        </ul>
-                    </div>
-                    <div class="anime">
-                        <ul class="d-flex flex-wrap">
-                            <li class="mr-1">
-                                <h5>Date aired: </h5>
+                                <h5>Thể loại: </h5>
                             </li>
                             <li>
-                                <p>Jan 8, 2021 to Mar 26, 2021</p>
+                                @foreach($genres as $key => $value)
+                                <a href="#">{{$value->name}} </a>
+                                @if($key < count($genres)-1) , @endif @endforeach </li>
+                        </ul>
+
+                        <ul class="d-flex flex-wrap">
+                            <li class="mr-1">
+                                <h5>Ngày phát hành: </h5>
+                            </li>
+                            <li>
+                                <p>{{$detailComic->release_date}}</p>
                             </li>
                         </ul>
-                    </div>
-                    <div class="d-flex flex-wrap">
-                        <div class="anime mr-3">
-                            <ul class="d-flex flex-wrap">
-                                <li class="mr-1">
-                                    <h5>Status: </h5>
-                                </li>
-                                <li>
-                                    <p>Completed</p>
-                                </li>
-                            </ul>
+
+                        <ul class="d-flex flex-wrap">
+                            <li class="mr-1">
+                                <h5>Tác giả: </h5>
+                            </li>
+                            <li>
+                                <p>{{$detailComic->author}}</p>
+                            </li>
+                        </ul>
+
+                        <div class="d-flex flex-wrap">
+                            <div class="anime mr-3">
+                                <ul class="d-flex flex-wrap">
+                                    <li class="mr-1">
+                                        <h5>Trạng thái: </h5>
+                                    </li>
+                                    <li>
+                                        <p>Đang cập nhật</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="anime mr-3">
+                                <ul class="d-flex flex-wrap">
+                                    <li class="mr-1">
+                                        <h5>Lượt xem: </h5>
+                                    </li>
+                                    <li>
+                                        <p>3,176,823</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="anime mr-3">
+                                <ul class="d-flex flex-wrap">
+                                    <li class="mr-1">
+                                        <h5>Yêu thích: </h5>
+                                    </li>
+                                    <li>
+                                        <p>3,176,823</p>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="anime mr-3">
-                            <ul class="d-flex flex-wrap">
-                                <li class="mr-1">
-                                    <h5>Views: </h5>
-                                </li>
-                                <li>
-                                    <p>3,176,823</p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="anime mr-3">
-                            <ul class="d-flex flex-wrap">
-                                <li class="mr-1">
-                                    <h5>Views: </h5>
-                                </li>
-                                <li>
-                                    <p>3,176,823</p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="anime">
-                            <ul class="d-flex flex-wrap">
-                                <li class="mr-1"><i class="fa-solid fa-circle-plus"></i></li>
-                                <li><a href="#">Bookmark</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="anime">
+
                         <ul>
                             <li class="mr-1">
-                                <h5>Summary:</h5>
+                                <h5>Nội dung:</h5>
                             </li>
                             <li>
-                                <p>Through their tutor Fuutarou Uesugi's diligent guidance, the Nakano quintuplets' academic
-                                    performance shows signs of improvement, even if their path to graduation is still rocky. However,
-                                    as they continue to cause various situations that delay any actual tutoring, Fuutarou becomes
-                                    increasingly involved with their personal lives, further complicating their relationship with each
-                                    other. On another note, Fuutarou slowly begins to realize the existence of a possible connection
-                                    between him and the past he believes to have shared with one of the five girls. With everyone's
-                                    feelings beginning to develop and overlap, will they be able to keep their bond strictly to that
-                                    of a teacher and his students—or will it mature into something else entirely?</p>
+                                <p>Thông qua sự hướng dẫn tận tình của gia sư Fuutarou Uesugi,
+                                    thành tích học tập của các em nhỏ nhà Nakano có dấu hiệu cải thiện,
+                                    ngay cả khi con đường tốt nghiệp của họ vẫn còn nhiều chông gai.
+                                    Tuy nhiên, khi họ tiếp tục gây ra nhiều tình huống làm trì hoãn mọi hoạt động dạy kèm thực tế,
+                                    Fuutarou ngày càng quanchapters tâm đến cuộc sống cá nhân của họ, khiến mối quan hệ của họ với nhau càng thêm phức tạp.
+                                    Một lưu ý khác, Fuutarou dần bắt đầu nhận ra sự tồn tại của một mối liên hệ có thể có giữa anh ta
+                                    và quá khứ mà anh ta tin rằng đã chia sẻ với một trong năm cô gái. Khi tình cảm của mọi người bắt đầu phát
+                                    triển và chồng chéo lên nhau, liệu họ có thể giữ mối quan hệ chặt chẽ giữa giáo viên và học sinh của mình
+                                    hay nó sẽ phát triển thành một thứ gì đó hoàn toàn khác?</p>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div><!-- Col end -->
 
-            <div class="col-lg-6 mt-5 mt-lg-0">
-                <div id="page-slider" class="page-slider small-bg">
-                    <div class="item" style="background-image:url(images/anime_banner/slide-page1.jpg)"></div>
-                    <div class="item" style="background-image:url(images/anime_banner/slide-page2.jpg)"> </div>
-                    <div class="item" style="background-image:url(images/anime_banner/slide-page3.jpg)"></div>
-                </div><!-- Col end -->
-
+            <div class="col-lg-4 mt-5 mt-lg-0">
                 <div class="episodes">
                     <div class="anime">
                         <ul class="d-flex flex-wrap">
                             <li class="mr-1">
-                                <h5>Episodes 1-12</h5>
+                                <h5>Chap 1-12</h5>
                             </li>
                         </ul>
                     </div>
-                    <ul class="d-flex flex-wrap">
-                        <!-- Change the url -->
-                        <li><a href="https://streamable.com/e/zg8uog" class="iframe-link">1</a></li>
-                        <!-- Change the url -->
-                        <li><a href="https://streamable.com/e/7jszsb" class="iframe-link">2</a></li>
-                        <!-- Change the url -->
-                        <li><a href="https://streamable.com/e/leonz0" class="iframe-link">3</a></li>
-                        <!-- Change the url -->
-                        <li><a href="https://streamable.com/e/jga900" class="iframe-link">4</a></li>
-
-                        <!-- Change the url -->
-                        <li><a href="https://streamable.com/e/zg8uog" class="iframe-link">5</a></li>
-                        <!-- Change the url -->
-                        <li><a href="https://streamable.com/e/7jszsb" class="iframe-link">6</a></li>
-                        <!-- Change the url -->
-                        <li><a href="https://streamable.com/e/leonz0" class="iframe-link">7</a></li>
-                        <!-- Change the url -->
-                        <li><a href="https://streamable.com/e/jga900" class="iframe-link">8</a></li>
-
-                        <!-- Change the url -->
-                        <li><a href="https://streamable.com/e/zg8uog" class="iframe-link">9</a></li>
-                        <!-- Change the url -->
-                        <li><a href="https://streamable.com/e/7jszsb" class="iframe-link">10</a></li>
-                        <!-- Change the url -->
-                        <li><a href="https://streamable.com/e/leonz0" class="iframe-link">11</a></li>
-                        <!-- Change the url -->
-                        <li><a href="https://streamable.com/e/jga900" class="iframe-link">12</a></li>
+                    <ul class="d-flex flex-direction list-chapter">
+                        @if($chapters != null)
+                            @foreach($chapters as $key => $value)
+                                <li><a href="{{url($detailComic->slug.'/'.$value->slug)}}" class="iframe-link" ><span>{{$value->name}}</span><span>{{$value->updated_at}}</span></a></li>
+                            @endforeach
+                        @else
+                            Truyện đang được cập nhật. Ấn theo dõi để cập nhật thông tin sớm nhất
+                        @endif
+                       
                     </ul>
                 </div>
             </div><!-- Content row end -->
 
             <div class="discord mt-2">
                 <div class="discord">
-                    <a href="#"><img class="w-100 img-fluid" src="images/banner/discord.jpg" alt=""></a>
+                    <a href="#"><img class="w-100 img-fluid" src="{{asset('images/client/banner/discord.jpg')}}" alt=""></a>
                 </div>
             </div>
             <!--/ subscribe end -->
@@ -162,7 +133,7 @@
                             <div class="comment-content d-flex">
                                 <!-- Comment Author -->
                                 <div class="comment-author">
-                                    <img class="w-100 img-fluid" src="images/feedback/1.jpg" alt="author">
+                                    <img class="w-100 img-fluid" src="images/client/feedback/1.jpg" alt="author">
                                 </div>
                                 <!-- Comment Meta -->
                                 <div class="comment-meta">
@@ -181,7 +152,7 @@
                                     <div class="comment-content d-flex">
                                         <!-- Comment Author -->
                                         <div class="comment-author">
-                                            <img class="w-100 img-fluid" src="images/feedback/2.jpg" alt="author">
+                                            <img class="w-100 img-fluid" src="images/client/feedback/2.jpg" alt="author">
                                         </div>
                                         <!-- Comment Meta -->
                                         <div class="comment-meta">
@@ -202,7 +173,7 @@
                             <div class="comment-content d-flex">
                                 <!-- Comment Author -->
                                 <div class="comment-author">
-                                    <img class="w-100 img-fluid" src="images/feedback/3.jpg" alt="author">
+                                    <img class="w-100 img-fluid" src="images/client/feedback/3.jpg" alt="author">
                                 </div>
                                 <!-- Comment Meta -->
                                 <div class="comment-meta">
@@ -221,7 +192,7 @@
                             <div class="comment-content d-flex">
                                 <!-- Comment Author -->
                                 <div class="comment-author">
-                                    <img class="w-100 img-fluid" src="images/feedback/4.jpg" alt="author">
+                                    <img class="w-100 img-fluid" src="images/client/feedback/4.jpg" alt="author">
                                 </div>
                                 <!-- Comment Meta -->
                                 <div class="comment-meta">
@@ -240,7 +211,7 @@
                             <div class="comment-content d-flex">
                                 <!-- Comment Author -->
                                 <div class="comment-author">
-                                    <img class="w-100 img-fluid" src="images/feedback/5.jpg" alt="author">
+                                    <img class="w-100 img-fluid" src="images/client/feedback/5.jpg" alt="author">
                                 </div>
                                 <!-- Comment Meta -->
                                 <div class="comment-meta">
@@ -283,3 +254,4 @@
     </div><!-- Container end -->
 </section>
 @endsection
+

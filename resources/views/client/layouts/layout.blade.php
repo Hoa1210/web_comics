@@ -119,7 +119,7 @@
     });
   </script>
   <!-- acmeticker -->
-  <script src="vendor/acmeticker/acmeticker.min.js"></script>
+  <script src="{{asset('vendor/acmeticker/acmeticker.min.js')}}"></script>
   <!-- acmeticker active code -->
   <script>
     jQuery(document).ready(function ($) {

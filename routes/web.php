@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\GenresController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\HomeAdminController;
 use App\Http\Controllers\client\HomeController;
+use App\Http\Controllers\client\ComicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,8 @@ use App\Http\Controllers\client\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/{comic}', [HomeController::class, 'detailComics'])->name('detailComics');
+Route::get('/truyen/{comic}', [ComicController::class, 'detailComics'])->name('detailComics');
+Route::get('/{comic}/{chapter}',[ComicController::class, 'chapter'])->name('chapter');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/trang-chu', [HomeAdminController::class, 'index'])->name('admin.home');
