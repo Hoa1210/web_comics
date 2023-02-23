@@ -4,13 +4,14 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\genres;
+use App\Service\GenreService;
 use Illuminate\Http\Request;
 
-class GenresController extends Controller
+class GenreAdminController extends Controller
 {
-    protected $genres;
-    public function __construct( Genres $genres){
-         $this->genres = $genres;
+    protected $genre;
+    public function __construct( GenreService $genre){
+         $this->genre = $genre;
     }
     public function index(){
         return view('admin.pages.genres.list');
@@ -22,7 +23,7 @@ class GenresController extends Controller
 
     public function store(Request $request)
     {
-        $create = $this->genres->creategenres($request);
+        $create = $this->genre->createGenres($request);
         
         return view('admin.pages.genres.create'); 
     }

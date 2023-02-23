@@ -35,35 +35,4 @@ class Comics extends Model
         return $this->hasMany(Chapters::class, 'comic_id');
     }
 
-    public function createComics($request)
-    {
-        if ($request->hasFile('img_path')) {
-            $name = date('mdYHis') . uniqid() . '.' . $request->file('img_path')->getClientOriginalExtension();
-            $path = Storage::putFileAs('public/images/comics', $request->file('img_path'), $name, 'public');
-        }
-        $comics = Comics::create([
-            'name' => $request->name,
-            'slug' => $request->slug,
-            'author' => $request->author,
-            'img_path' => $path,
-            'is_public' => $request->is_public,
-            'release_date' => $request->release_date,
-            'description' => $request->description,
-        ]);
-        if (is_array($request->genre_id)) {
-            foreach ($request->genre_id as $value) {
-                $comic_genre = ComicsGenres::create([
-                    'genre_id' => $value,
-                    'comic_id' => $comics->id,
-                ]);
-            }
-        } else {
-            $comic_genre = ComicsGenres::create([
-                'comic_id' => $comics->id,
-                'genre_id' => $request->genre_id
-            ]);
-        }
-
-        return $comic_genre;
-    }
 }

@@ -42,7 +42,7 @@
 
                                                 <div class="block2-txt text-center">
                                                     <div class="block2-txt-child1">
-                                                        <a class="text-uppercase" href="{{url('truyen/'.$value->slug)}}">
+                                                        <a class="text-uppercase" href="{{url('truyen-tranh/'.$value->slug)}}">
                                                             {{$value->name}}
                                                         </a>
                                                         <div class="star mb-2 d-flex flex-wrap justify-content-center">

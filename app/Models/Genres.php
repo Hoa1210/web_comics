@@ -31,11 +31,4 @@ class Genres extends Model
         return $this->belongsToMany(Comics::class);
     }
 
-    public function createGenres($request){
-        $genres = Genres::create([
-            'name' => $request->name,
-            'slug' => $request->slug
-        ]);
-        return $genres;
-    }
 }
