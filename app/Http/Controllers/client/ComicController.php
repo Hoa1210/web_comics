@@ -6,18 +6,28 @@ use App\Http\Controllers\Controller;
 use App\Models\Chapters;
 use App\Models\Comics;
 use App\Models\Images;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use App\Service\ComicService;
+use App\Service\GenreService;
 
 class ComicController extends Controller
 {
+
+    protected $comic;
+protected $genre;
+    public function __construct(ComicService $comic, GenreService $genre){
+        $this->comic = $comic;
+        $this->genre = $genre;
+    }
     public function index($comic)
     {
 
-        $detailComic = Comics::where('is_public', 1)->where('slug', $comic)->first();
-        $genres = Comics::find($detailComic->id)->genres;
-        $chapters = Comics::find(($detailComic->id))->chapters;
-        return view('client.pages.comics.index', compact('detailComic', 'genres', 'chapters'));
+        $detailComic = $this->comic->getComicBySlug($comic);
+        $genres = $this->comic->getComicById($detailComic->id)->genres;
+        $chapters = $this->comic->getComicById($detailComic->id)->chapters;
+        $arrChapter = $chapters->toArray();
+        $firstChapter = reset($arrChapter);
+        $lastChapter = end($arrChapter);
+        return view('client.pages.comics.index', compact('detailComic', 'genres', 'chapters','firstChapter','lastChapter'));
 
     }
 

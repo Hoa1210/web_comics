@@ -1,6 +1,7 @@
 <?php 
 namespace App\Service;
 
+use App\Models\Comics;
 use App\Models\Genres;
 
 class GenreService {

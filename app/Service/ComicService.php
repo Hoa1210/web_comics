@@ -19,7 +19,7 @@ class ComicService {
     {
         if ($request->hasFile('img_path')) {
             $file = $request->file('img_path');
-            $path_save = 'public/images/comics';
+            $path_save = 'images/comics';
             $path = $this->fileService->uploadFile($file, $path_save);
         }
         $comic = $this->comics->create([
@@ -50,5 +50,13 @@ class ComicService {
 
     public function getAllComics($is_public){
         return $this->comics->where('is_public','=',$is_public)->get();
+    }
+
+    public function getComicBySlug($slug){
+        return $this->getAllComics(1)->where('slug','=',$slug)->first();
+    }
+
+    public function getComicById($comic_id){
+        return $this->comics->orderBy('created_at')->find($comic_id);
     }
 }

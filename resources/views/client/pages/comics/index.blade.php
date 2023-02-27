@@ -11,8 +11,8 @@
                         <img src="{{Storage::url($detailComic->img_path)}}" width="100%" >
                         <div class="mt-2">
                             <button type="button" class="btn web-btn mt-1">Theo dõi</button>
-                            <button type="button" class="btn web-btn mt-1"><a href="">Đọc từ đầu</a></button>
-                            <button type="button" class="btn web-btn mt-1">Đọc mới nhất</button> 
+                            <button type="button" class="btn web-btn mt-1"><a href="{{url('truyen-tranh/'.$detailComic->slug.'/'.$firstChapter['slug'])}}">Đọc từ đầu</a></button>
+                            <button type="button" class="btn web-btn mt-1"><a href="{{url('truyen-tranh/'.$detailComic->slug.'/'.$lastChapter['slug'])}}">Đọc mới nhất</a></button> 
                         </div>
                     </div>
                     <div class="anime col-lg-8">
@@ -109,7 +109,7 @@
                     <ul class="d-flex flex-direction list-chapter">
                         @if($chapters != null)
                             @foreach($chapters as $key => $value)
-                                <li><a href="{{url('/truyen-tranh'.$detailComic->slug.'/'.$value->slug)}}" ><span>{{$value->name}}</span><span>{{$value->updated_at}}</span></a></li>
+                                <li><a href="{{url('truyen-tranh/'.$detailComic->slug.'/'.$value->slug)}}" ><span>{{$value->name}}</span><span>{{$value->updated_at}}</span></a></li>
                             @endforeach
                         @else
                             Truyện đang được cập nhật. Ấn theo dõi để cập nhật thông tin sớm nhất
