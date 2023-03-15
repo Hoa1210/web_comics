@@ -9,11 +9,13 @@ class ChapterService
     protected $fileService;
     protected $chapters;
     protected $images;
-    public function __construct(FileService $fileService, Chapters $chapters, Images $images)
+    protected $comics;
+    public function __construct(FileService $fileService, Chapters $chapters, Images $images, ComicService $comics)
     {
         $this->fileService = $fileService;
         $this->chapters = $chapters;
         $this->images = $images;
+        $this->comics = $comics;
     }
 
     public function createChapter($request)
@@ -31,13 +33,13 @@ class ChapterService
 
             $comic_id = $request->comic_id;
             $chapter_id = $createChapter->id;
-            $path_save = $comic_id .'/'.$chapter_id;
+            $path_save = $comic_id . '/' . $chapter_id;
 
             $extracs = $this->fileService->extractFile($path, $path_save);
             if (is_array($extracs)) {
                 foreach ($extracs as $file) {
                     if ($file != '.' && $file != '..') {
-                         $this->images->create([
+                        $this->images->create([
                             'name' => $file,
                             'path' => 'public/' . $path_save . '/' . $file,
                             'chapter_id' => $chapter_id,
@@ -49,4 +51,23 @@ class ChapterService
         }
         return 1;
     }
+
+    public function getImageByChapterId($chapter_id)
+    {
+        return $this->images->where('chapter_id', $chapter_id)->get();
+    }
+
+    public function getChapterByComicId($comic_id)
+    {
+        return $this->comics->getComicById($comic_id)->chapters->toArray();
+    }
+
+    public function getCurrentChapter($slug, $comic_id)
+    {
+        return $this->chapters->where([
+            'slug' => $slug,
+            'comic_id' => $comic_id
+        ])->first();
+    }
+
 }

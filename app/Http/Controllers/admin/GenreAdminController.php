@@ -14,7 +14,8 @@ class GenreAdminController extends Controller
          $this->genre = $genre;
     }
     public function index(){
-        return view('admin.pages.genres.list');
+        $genres = $this->genre->getAllGenres(1);
+        return view('admin.pages.genres.list',compact('genres'));
     }
 
     public function create(){

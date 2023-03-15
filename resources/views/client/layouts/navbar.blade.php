@@ -6,7 +6,7 @@
             <nav class="navbar navbar-expand-lg navbar-light p-0">
 
               <div class="logo">
-                <a class="d-block" href="index-2.html">
+                <a class="d-block" href="{{route('home')}}">
                   <img loading="lazy" src="{{asset('images/client/logo/logo.png')}}" alt="logo">
                 </a>
               </div>
@@ -27,7 +27,7 @@
                   </li>
 
                   <li class="nav-item ">
-                    <a href="genre.html" class="nav-link"> Thể loại</a>
+                    <a href="{{route('genre')}}" class="nav-link"> Thể loại</a>
                   </li>
 
                   <li class="nav-item">

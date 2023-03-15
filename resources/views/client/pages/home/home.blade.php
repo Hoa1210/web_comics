@@ -33,9 +33,9 @@
                             <div class="tab-pane fade show active" id="nav-Recently" role="tabpanel" aria-labelledby="nav-Recently-tab">
                                 <div class="row">
                                     @foreach($comics as $key => $value)    
-                                        <div class="col-sm-6 col-md-4 col-lg-3">
+                                        <div class="col-sm-6 col-md-4 col-lg-3 col-6">
                                             <!-- Block2 -->
-                                            <div class="block2 hd">
+                                            <div class="block2 raw">
                                                 <div class="block2-pic sub  hov-img0">
                                                     <img src="{{Storage::url($value->img_path)}}" alt="IMG-PRODUCT" >
                                                 </div>

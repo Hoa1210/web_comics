@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\HomeAdminController;
 use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\ComicController;
+use App\Http\Controllers\client\GenreController;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,7 @@ use App\Http\Controllers\client\ComicController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/truyen-tranh/{comic}', [ComicController::class, 'index'])->name('index');
 Route::get('/truyen-tranh/{comic}/{chapter}',[ComicController::class, 'chapter'])->name('chapter');
+Route::get('/tim-truyen',[GenreController::class,'index'])->name('genre');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/trang-chu', [HomeAdminController::class, 'index'])->name('admin.home');
@@ -37,3 +40,12 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/them-chapter', [ChapterAdminController::class, 'create'])->name('admin.chapter.create');
     Route::post('/them-chapter', [ChapterAdminController::class, 'store'])->name('admin.chapter.store');
 });
+
+Route::get('/auth/redirect/{provider}', function ($provider) {
+    return Socialite::driver($provider)->redirect();
+})->name('auth.redirect');
+
+Route::get('/auth/callback/{provider}', function ($provider) {
+    $user = Socialite::driver($provider)->user();
+    dd($user);
+})->name('auth.callback');;

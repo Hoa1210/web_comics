@@ -26,7 +26,7 @@
         <ul class="side-nav">
 
             <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="{{route('admin.home')}}" aria-expanded="false" aria-controls="home" class="side-nav-link">
+                <a  href="{{route('admin.home')}}" aria-expanded="false" aria-controls="home" class="side-nav-link">
                     <i class="uil-home-alt"></i>
                     <span class="badge bg-success float-end">4</span>
                     <span> Trang chủ </span>

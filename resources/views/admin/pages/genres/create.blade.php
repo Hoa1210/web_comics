@@ -40,7 +40,7 @@
                                     <label for="open" class=" form-label">Trạng thái</label>
                                     <div class="">
                                         <div class="form-check">
-                                            <input type="radio" id="open" name="public_is" value="1" class="form-check-input">
+                                            <input type="radio" id="open" name="public_is" value="1" class="form-check-input" checked>
                                             <label class="form-check-label" for="open">Mở</label>
                                         </div>
                                         <div class="form-check">

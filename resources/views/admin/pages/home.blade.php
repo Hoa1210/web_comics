@@ -1,4 +1,4 @@
 @extends('admin.layouts.layout')
 @section('contents')
-    <h1>ddasda</h1>
+    <h1>Comic.cc</h1>
 @endsection
