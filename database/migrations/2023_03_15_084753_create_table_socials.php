@@ -13,8 +13,13 @@ class CreateTableSocials extends Migration
      */
     public function up()
     {
-        Schema::create('table_socials', function (Blueprint $table) {
-            $table->id();
+        Schema::create('socials', function (Blueprint $table) {
+            $table->id()->autoIncrement();
+            $table->string('provider_id')->nullable(false);
+            $table->string('provider')->nullable(false);
+            $table->text("token")->nullable(false);
+            $table->unsignedBigInteger("user_id")->nullable(false);
+            $table->foreign("user_id")->references("id")->on("users");
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ class CreateTableSocials extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_socials');
+        Schema::dropIfExists('socials');
     }
 }
