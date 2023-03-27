@@ -43,7 +43,11 @@
                   </li>
 
                   <li class="header-get-a-quote">
-                    <a class="btn btn-primary js-show-modal1" href="#!">Sign Up</a>
+                    @if(auth()->check())
+                    <a class="btn btn-primary" href="{{route('users.logout')}}">Đăng xuất</a>
+                    @else
+                    <a class="btn btn-primary" href="{{route('login')}}">Đăng nhập</a>
+                    @endif
                   </li>
                 </ul>
               </div>

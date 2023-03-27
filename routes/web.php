@@ -5,6 +5,8 @@ use App\Http\Controllers\admin\ComicAdminController;
 use App\Http\Controllers\admin\GenreAdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\HomeAdminController;
+use App\Http\Controllers\auth\LoginController;
+use App\Http\Controllers\auth\SocicalController;
 use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\ComicController;
 use App\Http\Controllers\client\GenreController;
@@ -25,6 +27,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/truyen-tranh/{comic}', [ComicController::class, 'index'])->name('index');
 Route::get('/truyen-tranh/{comic}/{chapter}',[ComicController::class, 'chapter'])->name('chapter');
 Route::get('/tim-truyen',[GenreController::class,'index'])->name('genre');
+Route::get('/login',[LoginController::class,'login'])->name('login');
+Route::get('/logout',[LoginController::class,'logout'])->name('users.logout');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/trang-chu', [HomeAdminController::class, 'index'])->name('admin.home');
@@ -45,7 +49,4 @@ Route::get('/auth/redirect/{provider}', function ($provider) {
     return Socialite::driver($provider)->redirect();
 })->name('auth.redirect');
 
-Route::get('/auth/callback/{provider}', function ($provider) {
-    $user = Socialite::driver($provider)->user();
-    dd($user);
-})->name('auth.callback');;
+Route::get('/auth/callback/{provider}', [SocicalController::class, 'socical'])->name('auth.callback');;
