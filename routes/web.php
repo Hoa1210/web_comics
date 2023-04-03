@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\ChapterAdminController;
 use App\Http\Controllers\admin\ComicAdminController;
 use App\Http\Controllers\admin\GenreAdminController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\HomeAdminController;
 use App\Http\Controllers\auth\LoginController;
@@ -22,6 +23,9 @@ use Laravel\Socialite\Facades\Socialite;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:url');
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/truyen-tranh/{comic}', [ComicController::class, 'index'])->name('index');
