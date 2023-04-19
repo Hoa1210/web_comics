@@ -3,7 +3,7 @@
 <section id="main-container" class="main-container">
     <div class="container">
         <div class="title-chapter">
-            <h3 class="into-sub-title text-align">{{$detailComic->name}}</h3>
+            <h2 class="into-sub-title text-align"><a href="{{url('truyen-tranh/'.$detailComic->slug)}}">{{$detailComic->name}}</a></h2>
             <h5 class="text-align">{{$current_chapter->name}} - [ Cập nhật lúc: {{date_format($current_chapter->updated_at,'H:i d/m/Y')}}]</h5>
 
         </div>
@@ -36,6 +36,9 @@
             <button type="button" class="btn web-btn mt-1">
                 <a href="{{url('truyen-tranh/'.$detailComic->slug.'/'.$next_chapter['slug'])}}"><i class="fas fa-chevron-right" aria-hidden="true"></i></a>
             </button>
+            @endif
+            @if(auth()->check())
+            <button type="button" class="btn web-btn mt-1" id="flow-comics">Theo dõi</button>
             @endif
         </div>
         <div class="list-img">

@@ -35,14 +35,6 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">Top truyện</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">Bản tin</a>
-                                </li>
-
-                                <li class="nav-item">
                                     <a class="nav-link" href="contact.html">Liên Hệ</a>
                                 </li>
                             </ul>

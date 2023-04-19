@@ -6,6 +6,7 @@ use App\Models\ComicsGenres;
 
 class ComicService {
 
+    const PUBLIC = 1;
     protected $fileService;
     protected $comics;
     protected $comic_genre;
@@ -48,12 +49,18 @@ class ComicService {
         return 1;
     }
 
+    public function getAllComicAndLastChapter($public_is){
+        return $this->comics->where('is_public','=',$public_is)->with(['chapters' => function($query) {
+            $query->latest()->first();
+        }])->get();
+    }
+
     public function getAllComics($is_public){
         return $this->comics->where('is_public','=',$is_public)->get();
     }
 
     public function getComicBySlug($slug){
-        return $this->getAllComics(1)->where('slug','=',$slug)->first();
+        return $this->getAllComics(ComicService::PUBLIC)->where('slug','=',$slug)->first();
     }
 
     public function getComicById($comic_id){

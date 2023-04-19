@@ -31,6 +31,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/truyen-tranh/{comic}', [ComicController::class, 'index'])->name('index');
 Route::get('/truyen-tranh/{comic}/{chapter}',[ComicController::class, 'chapter'])->name('chapter');
 Route::get('/tim-truyen',[GenreController::class,'index'])->name('genre');
+Route::get('/tim-truyen/{genre}',[GenreController::class,'search'])->name('genre-search');
 Route::get('/login',[LoginController::class,'login'])->name('users.login');
 Route::get('/logout',[LoginController::class,'logout'])->name('users.logout');
 
