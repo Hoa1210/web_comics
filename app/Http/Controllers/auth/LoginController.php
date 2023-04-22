@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -14,7 +16,7 @@ class LoginController extends Controller
     }
 
     public function logout(){
-        Auth::logout();
+        auth('user')->logout();
         // dd(Auth::user());
         // Auth::guards('users')->logout();
         return redirect()->route('home');
@@ -31,9 +33,10 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        $user = User::where('email' , $credentials['email'])->first();
-        if($user && $credentials['password'] == $user->password ){
-            Auth::login($user);
+        $admin = Admin::where('email' , $credentials['email'])->first();
+        
+        if($admin && Hash::check($request->password, $admin->password) ){
+            auth('admin')->login($admin);
             return redirect()->route('admin.home');
         }
  
@@ -43,7 +46,7 @@ class LoginController extends Controller
     }
 
     public function logoutAdmin(){
-        Auth::logout();
+        auth('admin')->logout();
         // Auth::guards('users')->logout();
         return redirect()->route('admin.login');
     }

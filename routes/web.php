@@ -40,7 +40,7 @@ Route::group(['prefix'=>'admin'],function (){
     Route::get('/login', [LoginController::class,'loginAdmin'])->name('admin.login');
     Route::post('/login', [LoginController::class,'authAdmin'])->name('admin.auth');
 });
-Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function () {
+Route::group(['prefix'=>'admin', 'middleware'=>'auth.admin'],function () {
     Route::get('/logout', [LoginController::class,'logoutAdmin'])->name('admin.logout');
 
     Route::get('/trang-chu', [HomeAdminController::class, 'index'])->name('admin.home');

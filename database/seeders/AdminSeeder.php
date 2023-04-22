@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminSeeder extends Seeder
 {
@@ -18,7 +19,7 @@ class AdminSeeder extends Seeder
             'name'=> 'admin1',
             'email' => 'admin1@gmail.com',
             'email_verified_at' => NULL,
-            'password' =>bcrypt("admin1"),
+            'password' =>Hash::make("admin1"),
             'avatar' => NULL,
             'remember_token' => NULL,
             'created_at' => now(),
