@@ -11,6 +11,8 @@ use App\Http\Controllers\auth\SocicalController;
 use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\ComicController;
 use App\Http\Controllers\client\GenreController;
+use App\Http\Middleware\CheckLogin;
+use App\Http\Middleware\CheckLoginAdmin;
 use Laravel\Socialite\Facades\Socialite;
 
 /*
@@ -23,9 +25,7 @@ use Laravel\Socialite\Facades\Socialite;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/linkstorage', function () {
-    Artisan::call('storage:url');
-});
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/truyen-tranh/{comic}', [ComicController::class, 'index'])->name('index');
@@ -35,7 +35,14 @@ Route::get('/tim-truyen/{genre}',[GenreController::class,'search'])->name('genre
 Route::get('/login',[LoginController::class,'login'])->name('users.login');
 Route::get('/logout',[LoginController::class,'logout'])->name('users.logout');
 
-Route::group(['prefix' => 'admin'], function () {
+
+Route::group(['prefix'=>'admin'],function (){
+    Route::get('/login', [LoginController::class,'loginAdmin'])->name('admin.login');
+    Route::post('/login', [LoginController::class,'authAdmin'])->name('admin.auth');
+});
+Route::group(['prefix'=>'admin', 'middleware'=>'auth'],function () {
+    Route::get('/logout', [LoginController::class,'logoutAdmin'])->name('admin.logout');
+
     Route::get('/trang-chu', [HomeAdminController::class, 'index'])->name('admin.home');
 
     Route::get('/the-loai', [GenreAdminController::class, 'index'])->name('admin.genres');
@@ -54,4 +61,4 @@ Route::get('/auth/redirect/{provider}', function ($provider) {
     return Socialite::driver($provider)->redirect();
 })->name('auth.redirect');
 
-Route::get('/auth/callback/{provider}', [SocicalController::class, 'socical'])->name('auth.callback');;
+Route::get('/auth/callback/{provider}', [SocicalController::class, 'socical'])->name('auth.callback');
