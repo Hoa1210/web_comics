@@ -20,7 +20,7 @@
                                 <li class="nav-item active">
                                     <a href="{{route('home')}}" class="nav-link">Trang chủ</a>
                                 </li>
-                                @if(auth()->check())
+                                @if(auth('user')->check())
                                 <li class="nav-item ">
                                     <a href="genre.html" class="nav-link"> Theo Dõi</a>
                                 </li>
@@ -36,6 +36,10 @@
 
                                 <li class="nav-item">
                                     <a class="nav-link" href="contact.html">Liên Hệ</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">{{auth('user')->user()->name}}</a>
                                 </li>
                             </ul>
                         </div>
