@@ -43,15 +43,16 @@ Route::group(['prefix'=>'admin'],function (){
 Route::group(['prefix'=>'admin', 'middleware'=>'auth.admin'],function () {
     Route::get('/logout', [LoginController::class,'logoutAdmin'])->name('admin.logout');
 
-    Route::get('/trang-chu', [HomeAdminController::class, 'index'])->name('admin.home');
+    Route::get('/home', [HomeAdminController::class, 'index'])->name('admin.home');
 
-    Route::get('/the-loai', [GenreAdminController::class, 'index'])->name('admin.genres');
-    Route::get('/them-the-loai', [GenreAdminController::class, 'create'])->name('admin.genres.create');
-    Route::post('/them-the-loai', [GenreAdminController::class, 'store'])->name('admin.genres.store');
+    Route::get('/genners', [GenreAdminController::class, 'index'])->name('admin.genres');
+    Route::get('/add-genner', [GenreAdminController::class, 'create'])->name('admin.genres.create');
+    Route::post('/add-genner', [GenreAdminController::class, 'store'])->name('admin.genres.store');
 
-    Route::get('/truyen', [ComicAdminController::class, 'index'])->name('admin.comics');
-    Route::get('/them-truyen', [ComicAdminController::class, 'create'])->name('admin.comics.create');
-    Route::post('/them-truyen', [ComicAdminController::class, 'store'])->name('admin.comics.store');
+    Route::get('/comics', [ComicAdminController::class, 'index'])->name('admin.comics');
+    Route::get('/add-comic', [ComicAdminController::class, 'create'])->name('admin.comics.create');
+    Route::post('/add-comic', [ComicAdminController::class, 'store'])->name('admin.comics.store');
+    Route::delete('/delete-comic/{id_comic}', [ComicAdminController::class, 'delete'])->name('admin.comics.delete');
 
     Route::get('/them-chapter', [ChapterAdminController::class, 'create'])->name('admin.chapter.create');
     Route::post('/them-chapter', [ChapterAdminController::class, 'store'])->name('admin.chapter.store');

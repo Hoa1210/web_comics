@@ -64,6 +64,11 @@ class ComicService {
     }
 
     public function getComicById($comic_id){
-        return $this->comics->orderBy('created_at')->find($comic_id);
+        return $this->comics->find($comic_id);
     }
+
+    public function getGenreByIdComics($id){
+        return $this->comic_genre->where('comic_id','=',$id)->get();
+    }
+
 }

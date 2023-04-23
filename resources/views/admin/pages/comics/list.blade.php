@@ -26,6 +26,7 @@
                         <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                             <thead>
                                 <tr>
+                                    <th>#Mã</th>
                                     <th>Tên truyện</th>
                                     <th>Hình ảnh</th>
                                     <th>Tác giả</th>
@@ -37,12 +38,20 @@
                             <tbody>
                                 @foreach($comics as $key => $value)    
                                 <tr>
+                                    <td>{{$value->id}}</td>
                                     <td>{{$value->name}}</td>
                                     <td><img src="{{Storage::url($value->img_path)}}" alt="{{$value->slug}}" height="100" ></td>
                                     <td>{{$value->author}}</td>
                                     <td>{{$value->created_at}}</td>
                                     <td>{{$value->updated_at}}</td>
-                                    <td>đang cập nhật...</td>
+                                    <td>
+                                        <a href="#" class="btn btn-info">Sửa</a>
+                                        <form action="{{route('admin.comics.delete',$value->id)}}" method="post">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">Xóa</button> 
+                                        </form>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
