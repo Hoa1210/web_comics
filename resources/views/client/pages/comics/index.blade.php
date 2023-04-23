@@ -10,7 +10,9 @@
                     <div class="col-lg-4">
                         <img src="{{Storage::url($detailComic->img_path)}}" width="100%">
                         <div class="mt-2">
-                            <button type="button" class="btn web-btn mt-1">Theo dõi</button>
+                            @if(auth()->check())
+                                <button type="button" class="btn web-btn mt-1" id="flow-comics">Theo dõi</button>
+                            @endif
                             @if($firstChapter != null && $lastChapter != null)
                             <button type="button" class="btn web-btn mt-1"><a href="{{url('truyen-tranh/'.$detailComic->slug.'/'.$firstChapter['slug'])}}">Đọc từ đầu</a></button>
                             <button type="button" class="btn web-btn mt-1"><a href="{{url('truyen-tranh/'.$detailComic->slug.'/'.$lastChapter['slug'])}}">Đọc mới nhất</a></button>

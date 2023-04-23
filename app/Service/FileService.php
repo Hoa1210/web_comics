@@ -22,14 +22,14 @@ class FileService
         $zip = new ZipArchive;
 
         $res = $zip->open(storage_path('app/' . $path));
-
         if ($res === TRUE) {
             // Giải nén file vào thư mục đích
             $zip->extractTo(storage_path('app/public/' . $path_save));
             $zip->close();
             $directory = storage_path('app/public/' . $path_save);
-            $files = scandir($directory);
-            return $files;
+            $folder = scandir($directory);
+            $files = scandir($directory . '/' .$folder[2]);
+            return [$folder,$files];
         } else {
             return false;
         }

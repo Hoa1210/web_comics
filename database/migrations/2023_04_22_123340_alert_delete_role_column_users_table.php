@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableSocials extends Migration
+class AlertDeleteRoleColumnUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateTableSocials extends Migration
      */
     public function up()
     {
-        Schema::create('table_socials', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('role');
+            $table->dropColumn('token');
+            $table->datetime('deleted_at')->nullable();
         });
     }
 
@@ -26,6 +27,6 @@ class CreateTableSocials extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_socials');
+        Schema::dropColumns('role');
     }
 }

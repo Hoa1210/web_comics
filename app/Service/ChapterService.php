@@ -36,12 +36,12 @@ class ChapterService
             $path_save = $comic_id . '/' . $chapter_id;
 
             $extracs = $this->fileService->extractFile($path, $path_save);
-            if (is_array($extracs)) {
-                foreach ($extracs as $file) {
+            if (is_array($extracs[1])) {
+                foreach ($extracs[1] as $file) {
                     if ($file != '.' && $file != '..') {
                         $this->images->create([
                             'name' => $file,
-                            'path' => 'public/' . $path_save . '/' . $file,
+                            'path' => 'public/' . $path_save . '/' . $extracs[0][2] . '/' . $file,
                             'chapter_id' => $chapter_id,
                         ]);
                     }

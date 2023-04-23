@@ -62,7 +62,8 @@ class ComicController extends Controller
             array_push($img_chapter, $value->path);
         }
         natsort($img_chapter);
-        return view('client.pages.comics.chapter', compact('img_chapter','detailComic','current_chapter','previous_chapter','next_chapter'));
+        // dd($allChapter);
+        return view('client.pages.comics.chapter', compact('img_chapter','detailComic','current_chapter','previous_chapter','next_chapter','allChapter'));
 
     }
 }
