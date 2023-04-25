@@ -52,7 +52,8 @@
                                                             <i class="fa-solid fa-star"></i>
                                                             <i class="fa-solid fa-star"></i>
                                                         </div>
-                                                        <span class="text-uppercase"><a href="{{url('truyen-tranh/'.$value->slug.'/'.$value->chapters[0]->slug)}}">{{$value->chapters[0]->name}}</a></span>
+                                                        {{-- <span class="text-uppercase"><a href="{{url('truyen-tranh/'.$value->slug.'/'.$value->chapters[0]->slug)}}">{{$value->chapters[0]->name}}</a></span> --}}
+                                                        <span class="text-uppercase"><a href="#">Chap zero</a></span>
                                                     </div>
                                                 </div>
                                             </div>

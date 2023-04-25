@@ -18,10 +18,13 @@ class HomeController extends Controller
         // Auth::logout();
         // dd(Auth::guard());
         // dd(Auth::guard('users'));
-        $comics = $this->comic->getAllComicAndLastChapter(HomeController::PUBLIC);
+        // $comics = $this->comic->getAllComicAndLastChapter(HomeController::PUBLIC);
+        $comics = $this->comic->getLimitComicAndLastChapter(HomeController::PUBLIC,0,12);
         // foreach($comics as $value){
-        //     dd($value->chapters[0]->slug);
+        //     dd($value->chapters);
         // }
+        // dd($comics);
+        
         return view('client.pages.home.home',compact('comics'));
     }
 

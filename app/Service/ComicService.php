@@ -55,6 +55,12 @@ class ComicService {
         }])->get();
     }
 
+    public function getLimitComicAndLastChapter($public_is,$start,$limit){
+        return $this->comics->where('is_public','=',$public_is)->skip($start)->take($limit)->with(['chapters' => function($query) {
+            $query->latest()->first();
+        }])->orderBy('updated_at','desc')->get();
+    }
+
     public function getAllComics($is_public){
         return $this->comics->where('is_public','=',$is_public)->get();
     }

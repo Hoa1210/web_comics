@@ -37,10 +37,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="contact.html">Liên Hệ</a>
                                 </li>
-
+                                @if(auth('user')->check())
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">{{auth('user')->user()->name}}</a>
                                 </li>
+                                @endif
                             </ul>
                         </div>
                     </nav>
