@@ -4483,3 +4483,7 @@ list-img {
   right: 0;
   left: 0;
 }
+
+.breadcrumb-item.active a{
+  color: #6c757d !important;
+}

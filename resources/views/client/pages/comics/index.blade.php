@@ -2,6 +2,12 @@
 @section('content')
 <section id="main-container" class="main-container">
     <div class="container">
+        <nav aria-label="breadcrumb">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{url("/")}}"> Trang chủ</a></li>
+                <li class="breadcrumb-item active"><a href="{{url('truyen-tranh/'.$detailComic->slug)}}">{{$detailComic->name}}</a></li>
+            </ul>
+        </nav>
         <div class="row">
             <div class="col-lg-8">
                 <h3 class="into-sub-title text-align">{{$detailComic->name}}</h3>
@@ -29,7 +35,7 @@
                             </li>
                             <li>
                                 @foreach($genres as $key => $value)
-                                <a href="#">{{$value->name}} </a>
+                                <a href="{{url('tim-truyen/'.$value->slug)}}">{{$value->name}} </a>
                                 @if($key < count($genres)-1) , @endif @endforeach </li>
                         </ul>
 

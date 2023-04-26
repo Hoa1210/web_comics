@@ -1,8 +1,17 @@
-@extends('client/layouts.layout')
+@extends('client.layouts.layout')
 
 @section('content')
-<section class="ts-anime genre">
+<section class="ts-anime">
     <div class="container">
+        @isset($list_comic)
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{url("/")}}">Thể loại</a></li>
+                    <li class="breadcrumb-item active"><a href="{{url('tim-truyen/'.$genre->slug)}}">{{$genre->name}}</a></li>
+                </ul>
+            </nav>
+        @endisset
+
         <div class="row text-center">
             <div class="col-lg-12">
                 <h2 class="section-title">Tìm kiếm</h2>
@@ -11,12 +20,11 @@
         </div>
         <!--/ Title row end -->
 
-        <div class="row">
+        <div class="row genre">
             <div class="col-lg-9">
                 <div class="row">
                     @isset($list_comic)
                     @foreach($list_comic as $value)
-
                     <div class="col-lg-3 col-sm-6 col-md-4">
                         <!-- Block2 -->
                         <div class="block2 raw">
@@ -51,7 +59,7 @@
             <div class="col-lg-3">
                 <ul class="d-flex flex-wrap">
                     @foreach($list_genre as $value)
-                    <li><a href="{{url('tim-truyen/'.$value->slug)}}">{{$value->name}}</a></li>
+                    <li ><a href="{{url('tim-truyen/'.$value->slug)}}">{{$value->name}}</a></li>
                     @endforeach
                 </ul>
             </div>

@@ -26,6 +26,6 @@ class GenreController extends Controller
         $genre = $this->genres->getGenreBySlug($genre);
         $list_genre = $this->genres->getAllGenres(GenreController::PUBLIC);
         $list_comic = $genre->comics;
-        return view('client.pages.genres.index', compact('list_genre','list_comic'));
+        return view('client.pages.genres.index', compact('list_genre','list_comic','genre'));
     }
 }
