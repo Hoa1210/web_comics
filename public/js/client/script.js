@@ -322,4 +322,37 @@ $(document).ready(function () {
 
         window.location.href = url;
     });
+    $("#btn-cmt").click(function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'GET',
+            url: '/binh-luan',
+            data: $("#form-cmt").serialize(),
+            success: function(data){
+                $("#comment").val("");
+                $("#list-cmt").prepend(renderCOmmentHTML(data));
+            }
+        });
+    });
+
+    function renderCOmmentHTML(data){
+        var date = moment(data.created_at).utc().format('YYYY-MM-DD hh:mm:ss')
+        return `<li class="single_comment_area">
+        <!-- Comment Content -->
+        <div class="comment-content d-flex">
+            <!-- Comment Author -->
+            <div class="comment-author">
+                <img class="w-100 img-fluid" src="${data.user.avatar}" alt="author">
+            </div>
+            <!-- Comment Meta -->
+            <div class="comment-meta">
+                <a href="#!" class="post-date">${date}</a>
+                <h5>${data.user.name}</h5>
+                <p>${data.content}</p>
+                <a href="#!" class="like">Thích</a>
+                <a href="#!" class="reply">Trả Lời</a>
+            </div>
+        </div>
+    </li>`;
+    }
 });

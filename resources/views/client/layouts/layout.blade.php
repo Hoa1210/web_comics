@@ -86,6 +86,7 @@
       });
     })
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
   <script src="{{asset('js/client/script.js')}}"></script>
 
 </body>

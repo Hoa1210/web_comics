@@ -10,6 +10,7 @@ use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\SocicalController;
 use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\ComicController;
+use App\Http\Controllers\client\CommentController;
 use App\Http\Controllers\client\GenreController;
 use App\Http\Middleware\CheckLogin;
 use App\Http\Middleware\CheckLoginAdmin;
@@ -34,7 +35,7 @@ Route::get('/tim-truyen',[GenreController::class,'index'])->name('genre');
 Route::get('/tim-truyen/{genre}',[GenreController::class,'search'])->name('genre-search');
 Route::get('/login',[LoginController::class,'login'])->name('users.login');
 Route::get('/logout',[LoginController::class,'logout'])->name('users.logout');
-
+Route::get('/binh-luan',[CommentController::class,'comment'])->name('comment');
 
 Route::group(['prefix'=>'admin'],function (){
     Route::get('/login', [LoginController::class,'loginAdmin'])->name('admin.login');

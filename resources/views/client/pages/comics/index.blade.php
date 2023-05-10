@@ -132,6 +132,8 @@
             </div>
             <!--/ subscribe end -->
 
+            @include('client.pages.comments.cmt')
+
         </div>
     </div><!-- Container end -->
 </section>

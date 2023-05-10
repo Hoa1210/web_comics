@@ -40,4 +40,7 @@ class User extends Authenticatable
     ];
 
     public $timestamps = true;
+    public function comments(){
+        return $this->hasMany(Comments::class);
+    }
 }

@@ -8,6 +8,7 @@ use App\Models\Comics;
 use App\Models\Images;
 use App\Service\ChapterService;
 use App\Service\ComicService;
+use App\Service\CommentService;
 use App\Service\GenreService;
 
 class ComicController extends Controller
@@ -16,10 +17,12 @@ class ComicController extends Controller
     protected $comic;
     protected $genre;
     protected $chapter;
-    public function __construct(ComicService $comic, GenreService $genre, ChapterService $chapter){
+    protected $comment;
+    public function __construct(ComicService $comic, GenreService $genre, ChapterService $chapter, CommentService $comment){
         $this->comic = $comic;
         $this->genre = $genre;
         $this->chapter = $chapter;
+        $this->comment = $comment;
     }
     public function index($comic)
     {
@@ -30,7 +33,9 @@ class ComicController extends Controller
         $arrChapter = $chapters->toArray();
         $firstChapter = reset($arrChapter);
         $lastChapter = end($arrChapter);
-        return view('client.pages.comics.index', compact('detailComic', 'genres', 'chapters','firstChapter','lastChapter'));
+        $comments = $this->comment->getCommentByComic($detailComic->id);
+
+        return view('client.pages.comics.index', compact('detailComic', 'genres', 'chapters','firstChapter','lastChapter','comments'));
 
     }
 

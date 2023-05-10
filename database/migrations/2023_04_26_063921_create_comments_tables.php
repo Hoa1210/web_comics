@@ -22,7 +22,7 @@ class CreateCommentsTables extends Migration
             $table->foreign("comic_id")->references("id")->on("comics");
             $table->unsignedBigInteger('chapter_id')->nullable();
             $table->foreign("chapter_id")->references("id")->on("chapters");
-            $table->integer('parent_id');
+            $table->integer('parent_id')->nullable();
             $table->timestamps();
         });
     }
