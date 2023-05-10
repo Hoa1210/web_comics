@@ -9,7 +9,9 @@ use App\Models\Images;
 use App\Service\ChapterService;
 use App\Service\ComicService;
 use App\Service\CommentService;
+use App\Service\FarvoriteService;
 use App\Service\GenreService;
+use Illuminate\Http\Request;
 
 class ComicController extends Controller
 {
@@ -18,16 +20,24 @@ class ComicController extends Controller
     protected $genre;
     protected $chapter;
     protected $comment;
-    public function __construct(ComicService $comic, GenreService $genre, ChapterService $chapter, CommentService $comment){
+    protected $farvorite;
+    public function __construct(ComicService $comic, GenreService $genre, ChapterService $chapter, 
+    CommentService $comment, FarvoriteService $farvorite){
         $this->comic = $comic;
         $this->genre = $genre;
         $this->chapter = $chapter;
         $this->comment = $comment;
+        $this->farvorite = $farvorite;
     }
-    public function index($comic)
+    public function index($comic,Request $request)
     {
-
+        $user_id = auth()->user()->id;
         $detailComic = $this->comic->getComicBySlug($comic);
+
+        if($request->ajax()){
+            return $this->farvorite->createFarvorite($detailComic->id, $user_id);
+        }
+        $checkFarvorite = $this->farvorite->checkFarvorite($detailComic->id, $user_id);
         $genres = $this->comic->getComicById($detailComic->id)->genres;
         $chapters = $this->comic->getComicById($detailComic->id)->chapters;
         $arrChapter = $chapters->toArray();
@@ -35,7 +45,8 @@ class ComicController extends Controller
         $lastChapter = end($arrChapter);
         $comments = $this->comment->getCommentByComic($detailComic->id);
 
-        return view('client.pages.comics.index', compact('detailComic', 'genres', 'chapters','firstChapter','lastChapter','comments'));
+        return view('client.pages.comics.index', 
+        compact('detailComic', 'genres', 'chapters','firstChapter','lastChapter','comments','checkFarvorite'));
 
     }
 

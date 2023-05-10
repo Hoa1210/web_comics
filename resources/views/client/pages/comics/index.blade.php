@@ -17,7 +17,11 @@
                         <img src="{{Storage::url($detailComic->img_path)}}" width="100%">
                         <div class="mt-2">
                             @if(auth()->check())
-                                <button type="button" class="btn web-btn mt-1" id="flow-comics">Theo dõi</button>
+                            
+                            {{-- <input type="button" id="unflow-comics" class="btn web-btn mt-1" value="Đang theo dõi"> --}}
+
+                            <input type="button" id="flow-comics" class="btn web-btn mt-1" @if($checkFarvorite) value="Đang theo dõi" @else value="Theo dõi" @endif>
+
                             @endif
                             @if($firstChapter != null && $lastChapter != null)
                             <button type="button" class="btn web-btn mt-1"><a href="{{url('truyen-tranh/'.$detailComic->slug.'/'.$firstChapter['slug'])}}">Đọc từ đầu</a></button>

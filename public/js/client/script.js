@@ -355,4 +355,20 @@ $(document).ready(function () {
         </div>
     </li>`;
     }
+
+    $("#flow-comics").on('click', function(){
+        $.ajax({
+            url: location.href,
+            type: "GET",
+            data: "farvorites",
+            success: function(data){
+                console.log(data);
+                if(data == "delete"){
+                    $("#flow-comics").val("Theo dõi");
+                }else{
+                    $("#flow-comics").val("Đang theo dõi");
+                }
+            }
+        });
+    });
 });
