@@ -42,7 +42,7 @@ class ComicAdminController extends Controller
         try {
             $genner = $this->comic->getGenreByIdComics($id_comic);
             $comic = $this->comic->getComicById($id_comic);
-            if ($comic) {
+            if ($genner) {
                 foreach ($genner as $value) {
                     $value->delete();
                 }
@@ -54,9 +54,10 @@ class ComicAdminController extends Controller
                     Storage::delete($comic->img_path);
                 }
             }
-            return redirect()->route('admin.comics');
+            return redirect()->route('admin.comics')->with('success','Xóa truyện thành công!!');
         } catch (ThrowUpException $e) {
-            dd($e);
+            // dd($e);
+            return redirect()->route('admin.comics')->with('error','Lỗi!!');
         }
     }
 }
