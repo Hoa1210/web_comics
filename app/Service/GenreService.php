@@ -21,10 +21,25 @@ class GenreService {
         ]);
         return $genres;
     }
+
+    public function updateGenre($id_genre, $request){
+        $genre = $this->getGenreById($id_genre);
+        $genre->name = $request->name;
+        $genre->slug = $request->slug;
+        $genre->is_public = $request->is_public;
+        $genre->description = $request->description;
+        $genre->save();
+        return 1;
+    }
+
+
     public function getAllGenres($is_public){
         return $this->genre->where('is_public','=',$is_public)->get();
     }
     public function getGenreBySlug($slug){
         return $this->getAllGenres(GenreService::PUBLIC)->where('slug','=',$slug)->first();
+    }
+    public function getGenreById($id_genre){
+        return $this->genre->find($id_genre);
     }
 }

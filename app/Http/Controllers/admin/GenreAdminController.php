@@ -28,4 +28,15 @@ class GenreAdminController extends Controller
         
         return view('admin.pages.genres.create'); 
     }
+
+    public function edit($id_genre){
+        $genre = $this->genre->getGenreById($id_genre);
+        return view('admin.pages.genres.edit',compact('genre'));
+    }
+
+    public function update($id_genre, Request $request){
+         $update = $this->genre->updateGenre($id_genre, $request);
+         return redirect()->route('admin.genres')->with('success','Thay đổi thành công!!');
+    }
+
 }

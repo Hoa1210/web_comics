@@ -25,7 +25,7 @@
                     <div class="tab-pane show active" id="input-types-preview">
                         @if(session('success'))
                         <div class="alert alert-success" role="alert">
-                            {{sesion('success')}}
+                            {{session('success')}}
                         </div>
                         @endif
                         <table id="basic-datatable" class="table dt-responsive nowrap w-100">

@@ -49,6 +49,9 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth.admin'],function () {
     Route::get('/genners', [GenreAdminController::class, 'index'])->name('admin.genres');
     Route::get('/genners/create', [GenreAdminController::class, 'create'])->name('admin.genres.create');
     Route::post('/genners', [GenreAdminController::class, 'store'])->name('admin.genres.store');
+    Route::delete('/genres/{id_genre}', [GenreAdminController::class, 'delete'])->name('admin.genres.delete');
+    Route::get('/genres/{id_genre}/edit', [GenreAdminController::class, 'edit'])->name('admin.genres.edit');
+    Route::put('/genres/{id_genre}', [GenreAdminController::class, 'update'])->name('admin.genres.update');
 
     Route::get('/comics', [ComicAdminController::class, 'index'])->name('admin.comics');
     Route::get('/comics/create', [ComicAdminController::class, 'create'])->name('admin.comics.create');

@@ -23,6 +23,11 @@
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane show active" id="input-types-preview">
+                        @if(session('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{session('success')}}
+                        </div>
+                        @endif
                         <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                             <thead>
                                 <tr>
@@ -30,7 +35,8 @@
                                     <th>Slug</th>
                                     <th>Trạng thái</th>
                                     <th>Mô tả</th>
-                                    <th>Ngày tạo</th>
+                                    <th>Ngày thêm</th>
+                                    <th>Ngày cạp nhật</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -42,7 +48,33 @@
                                     <td>{{$value->is_public == 1 ? "Hoạt động" : "Đóng"}}</td>
                                     <td>{{$value->description}}</td>
                                     <td>{{$value->created_at}}</td>
-                                    <td>đang cập nhật...</td>
+                                    <td>{{$value->created_at}}</td>
+                                    <td>
+                                        <a href="{{route('admin.genres.edit',$value->id)}}" class="btn btn-info ms-xl-2" title="Sửa thể loại"><i class="mdi mdi-pencil"></i></a>
+
+                                        <button type="button" class="btn btn-danger ms-xl-2" data-bs-toggle="modal" data-bs-target="#standard-modal{{$value->id}}"><i class="dripicons-trash"></i></button>
+                                        <div id="standard-modal{{$value->id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="standard-modalLabel">Xóa thể loại</h4>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Bạn thực sự muốn xóa?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hủy</button>
+                                                        <form action="{{route('admin.genres.delete',$value->id)}}" method="post">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button type="submit" class="btn btn-primary">Xóa</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
