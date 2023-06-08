@@ -27,7 +27,7 @@
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Tên truyện</label>
-                                <input type="text" id="name" name="name" class="form-control" placeholder="Tên truyện">
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Tên truyện" required>
                             </div>
 
                             <div class="mb-3">
@@ -37,12 +37,12 @@
 
                             <div class="mb-3">
                                 <label for="author" class="form-label">Tác giả</label>
-                                <input type="text" id="author" name="author" class="form-control" placeholder="Tác giả">
+                                <input type="text" id="author" name="author" class="form-control" placeholder="Tác giả" required>
                             </div>
 
                             <label for="open" class=" form-label">Thể loại</label>
                             <div class="">
-                                <select class="select2 form-control select2-multiple" name="genre_id[]" data-toggle="select2" multiple="multiple" data-placeholder="Chọn ...">
+                                <select class="select2 form-control select2-multiple" name="genre_id[]" data-toggle="select2" multiple="multiple" data-placeholder="Chọn ..." required>
                                     @foreach($genres as $key => $value)
                                     <option value="{{$value->id}}">{{$value->name}}</option>
                                     @endforeach
@@ -74,7 +74,7 @@
                             </div>
                             <div class="mt-3">
                                 <label for="image_comic" class="form-label">Chọn ảnh bìa</label>
-                                <input type="file" id="image_comic" name="img_path" class="form-control">
+                                <input type="file" id="image_comic" name="img_path" class="form-control" required>
                                 <div class="preview">
                                     <img id="image-preview" src="#" alt="Preview Image">
                                 </div>

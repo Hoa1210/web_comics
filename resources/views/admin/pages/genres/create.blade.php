@@ -29,7 +29,7 @@
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Tên thể loại</label>
-                                <input type="text" id="name" name="name" class="form-control" pattern="[A-Za-z]*" placeholder="Tên thể loại">
+                                <input type="text" id="name" name="name" class="form-control" pattern="[A-Za-z]*" placeholder="Tên thể loại" required>
                                 <p class="text-danger">
                                     * Không được viết ký tự đặc biệt và số
                                 </p>
@@ -37,7 +37,7 @@
 
                             <div class="mb-3">
                                 <label for="slug" class="form-label">Slug</label>
-                                <input type="text" id="slug" name="slug" class="form-control" placeholder="Slug thể loại" readonly>
+                                <input type="text" id="slug" name="slug" class="form-control" placeholder="Slug thể loại" readonly required>
                             </div>
 
                             <label for="open" class=" form-label">Trạng thái</label>
