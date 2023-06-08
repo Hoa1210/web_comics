@@ -55,7 +55,7 @@
 
                             <div class="mt-3 form-label">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 100px">{{$genre->description}}</textarea>
+                                    <textarea class="form-control" name="description" placeholder="Leave a comment here" id="floatingTextarea" style="height: 100px">{{$genre->description}}</textarea>
                                     <label for="floatingTextarea">Mô tả</label>
                                 </div>
                             </div>

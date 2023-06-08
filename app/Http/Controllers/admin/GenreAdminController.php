@@ -39,4 +39,12 @@ class GenreAdminController extends Controller
          return redirect()->route('admin.genres')->with('success','Thay đổi thành công!!');
     }
 
+    public function delete($id_genre){
+        try{
+            $delete = $this->genre->deleteGenre($id_genre);
+            return redirect()->route('admin.genres')->with('success','Xóa thành công thể loại!!');
+        } catch (\Throwable $th) {
+            return redirect()->route('admin.genres')->with('error','Vẫn còn truyện thuộc thể loại này! Không được xóa');
+        }
+    }
 }

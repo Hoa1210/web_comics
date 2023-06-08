@@ -28,6 +28,11 @@
                             {{session('success')}}
                         </div>
                         @endif
+                        @if(session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{session('error')}}
+                        </div>
+                        @endif
                         <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                             <thead>
                                 <tr>

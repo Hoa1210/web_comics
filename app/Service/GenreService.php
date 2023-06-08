@@ -17,7 +17,9 @@ class GenreService {
     public function createGenres($request){
         $genres = $this->genre->create([
             'name' => $request->name,
-            'slug' => $request->slug
+            'slug' => $request->slug,
+            'is_public' => $request->is_public,
+            'description' => $request->description
         ]);
         return $genres;
     }
@@ -30,6 +32,11 @@ class GenreService {
         $genre->description = $request->description;
         $genre->save();
         return 1;
+    }
+
+    public function deleteGenre($id_genre){
+        return $this->getGenreById($id_genre)->delete();
+        
     }
 
 
