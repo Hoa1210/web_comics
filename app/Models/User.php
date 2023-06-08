@@ -43,4 +43,8 @@ class User extends Authenticatable
     public function comments(){
         return $this->hasMany(Comments::class);
     }
+    public function comics()
+    {
+        return $this->belongsToMany(Comics::class,'farvorites','user_id','comic_id');
+    }
 }

@@ -2,13 +2,16 @@
 namespace App\Service;
 
 use App\Models\Farvorites;
+use App\Models\User;
 
 class FarvoriteService {
 
     private $farvorite;
+    private $user;
 
-    public function __construct(Farvorites $farvorite){
+    public function __construct(Farvorites $farvorite, User $user){
         $this->farvorite = $farvorite;
+        $this->user = $user;
     }
 
     public function createFarvorite($comic_id, $user_id){
@@ -38,5 +41,9 @@ class FarvoriteService {
 
     public function deleteFarvorite($id){
         return $this->farvorite->find($id)->delete();
+    }
+
+    public function getAllComicsFarvoriteByUserId($user_id){
+        return $this->user->find($user_id)->comics;
     }
 }

@@ -31,13 +31,17 @@ class ComicController extends Controller
     }
     public function index($comic,Request $request)
     {
-        $user_id = auth()->user()->id;
         $detailComic = $this->comic->getComicBySlug($comic);
-
-        if($request->ajax()){
-            return $this->farvorite->createFarvorite($detailComic->id, $user_id);
+        $checkFarvorite = null;
+        if(auth()->check()){
+            $user_id = auth()->user()->id;
+    
+            if($request->ajax()){
+                return $this->farvorite->createFarvorite($detailComic->id, $user_id);
+            }
+            $checkFarvorite = $this->farvorite->checkFarvorite($detailComic->id, $user_id);
         }
-        $checkFarvorite = $this->farvorite->checkFarvorite($detailComic->id, $user_id);
+
         $genres = $this->comic->getComicById($detailComic->id)->genres;
         $chapters = $this->comic->getComicById($detailComic->id)->chapters;
         $arrChapter = $chapters->toArray();

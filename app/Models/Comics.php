@@ -35,4 +35,9 @@ class Comics extends Model
         return $this->hasMany(Chapters::class, 'comic_id');
     }
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'farvorites', 'comic_id','user_id');
+    }
+
 }

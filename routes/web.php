@@ -11,6 +11,7 @@ use App\Http\Controllers\auth\SocicalController;
 use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\ComicController;
 use App\Http\Controllers\client\CommentController;
+use App\Http\Controllers\client\FarvoriteController;
 use App\Http\Controllers\client\GenreController;
 use App\Http\Middleware\CheckLogin;
 use App\Http\Middleware\CheckLoginAdmin;
@@ -36,6 +37,7 @@ Route::get('/tim-truyen/{genre}',[GenreController::class,'search'])->name('genre
 Route::get('/login',[LoginController::class,'login'])->name('users.login');
 Route::get('/logout',[LoginController::class,'logout'])->name('users.logout');
 Route::get('/binh-luan',[CommentController::class,'comment'])->name('comment');
+Route::get('/theo-doi',[FarvoriteController::class, 'index'])->name('farvorite');
 
 Route::group(['prefix'=>'admin'],function (){
     Route::get('/login', [LoginController::class,'loginAdmin'])->name('admin.login');

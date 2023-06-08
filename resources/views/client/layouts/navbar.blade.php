@@ -22,7 +22,7 @@
                                 </li>
                                 @if(auth('user')->check())
                                 <li class="nav-item ">
-                                    <a href="genre.html" class="nav-link"> Theo Dõi</a>
+                                    <a href="{{route('farvorite')}}" class="nav-link"> Theo Dõi</a>
                                 </li>
                                 @endif
 
