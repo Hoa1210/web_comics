@@ -3,6 +3,7 @@ namespace App\Service;
 
 use App\Models\Comics;
 use App\Models\ComicsGenres;
+use Illuminate\Support\Facades\Storage;
 
 class ComicService {
 
@@ -47,6 +48,59 @@ class ComicService {
         }
 
         return 1;
+    }
+
+    public function updateComics($id_comic,$request){
+        // dd($request);
+
+        $comic = $this->comics->find($id_comic);
+        $genres = $this->getGenreByIdComics($id_comic);
+        foreach ($genres as $value) {
+            $genre_arr = [$value->genre_id];
+        }
+        
+        
+        if($request->hasFile('img_path')){
+            $img_old = $comic->img_path;
+            if(Storage::exists($img_old)){
+                $delete = Storage::delete($img_old);
+            }
+            $file = $request->file('img_path');
+            $path_save = 'images/comics';
+            $path = $this->fileService->uploadFile($file, $path_save);
+        }else{
+            $path = $comic->img_path;
+        }
+
+        if(!empty($request->genre_id)  && !empty($request->genre_id)){
+            if(!$this->compareArrays($request->genre_id,$genre_arr)){
+                foreach ($genres as $value) {
+                    $value->delete();
+                }
+                foreach ($request->genre_id as $value) {
+                    $this->comic_genre->create([
+                        'genre_id' => $value,
+                        'comic_id' => $id_comic,
+                    ]);
+                }
+            }
+        }
+
+        $comic->name = $request->name;
+        $comic->slug = $request->slug;
+        $comic->author = $request->author;
+        $comic->is_public = $request->is_public;
+        $comic->release_date = $request->release_date;
+        $comic->description = $request->description;
+        $comic->img_path = $path;
+        $comic->save();
+        return 1;
+    }
+
+    public function compareArrays($arr1 , $arr2){
+        sort($arr1);
+        sort($arr2);
+        return($arr1 == $arr2);
     }
 
     public function getAllComicAndLastChapter($public_is){

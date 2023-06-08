@@ -47,13 +47,15 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth.admin'],function () {
     Route::get('/home', [HomeAdminController::class, 'index'])->name('admin.home');
 
     Route::get('/genners', [GenreAdminController::class, 'index'])->name('admin.genres');
-    Route::get('/add-genner', [GenreAdminController::class, 'create'])->name('admin.genres.create');
-    Route::post('/add-genner', [GenreAdminController::class, 'store'])->name('admin.genres.store');
+    Route::get('/genners/create', [GenreAdminController::class, 'create'])->name('admin.genres.create');
+    Route::post('/genners', [GenreAdminController::class, 'store'])->name('admin.genres.store');
 
     Route::get('/comics', [ComicAdminController::class, 'index'])->name('admin.comics');
-    Route::get('/add-comic', [ComicAdminController::class, 'create'])->name('admin.comics.create');
-    Route::post('/add-comic', [ComicAdminController::class, 'store'])->name('admin.comics.store');
-    Route::delete('/delete-comic/{id_comic}', [ComicAdminController::class, 'delete'])->name('admin.comics.delete');
+    Route::get('/comics/create', [ComicAdminController::class, 'create'])->name('admin.comics.create');
+    Route::post('/comics', [ComicAdminController::class, 'store'])->name('admin.comics.store');
+    Route::delete('/comics/{id_comic}', [ComicAdminController::class, 'delete'])->name('admin.comics.delete');
+    Route::get('/comics/{id_comic}/edit', [ComicAdminController::class, 'edit'])->name('admin.comics.edit');
+    Route::put('comics/{id_comic}', [ComicAdminController::class,'update'])->name('admin.comics.update');
 
     Route::get('/them-chapter', [ChapterAdminController::class, 'create'])->name('admin.chapter.create');
     Route::post('/them-chapter', [ChapterAdminController::class, 'store'])->name('admin.chapter.store');

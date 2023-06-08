@@ -51,7 +51,7 @@
                                     <td>{{$value->updated_at}}</td>
                                     <td class="d-flex">
                                         <a href="#" class="btn btn-info " title="Danh sách chương"><i class="mdi mdi-playlist-edit"></i></a>
-                                        <a href="#" class="btn btn-info ms-xl-2" title="Sửa truyện"><i class="mdi mdi-pencil"></i></a>
+                                        <a href="{{route('admin.comics.edit',$value->id)}}" class="btn btn-info ms-xl-2" title="Sửa truyện"><i class="mdi mdi-pencil"></i></a>
 
                                         <button type="button" class="btn btn-danger ms-xl-2" data-bs-toggle="modal" data-bs-target="#standard-modal{{$value->id}}"><i class="dripicons-trash"></i></button>
                                         <div id="standard-modal{{$value->id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">

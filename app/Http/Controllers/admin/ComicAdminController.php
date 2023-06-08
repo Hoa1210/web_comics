@@ -46,7 +46,6 @@ class ComicAdminController extends Controller
                 foreach ($genner as $value) {
                     $value->delete();
                 }
-                
             }
             $delete_comic = $comic->delete();
             if($delete_comic){
@@ -58,6 +57,28 @@ class ComicAdminController extends Controller
         } catch (ThrowUpException $e) {
             // dd($e);
             return redirect()->route('admin.comics')->with('error','Lỗi!!');
+        }
+    }
+
+    public function edit($id_comic){
+        try {
+            $comic = $this->comic->getComicById($id_comic);
+            $genres = $this->genre->getAllGenres(1);
+            $comic_genres = $this->comic->getGenreByIdComics($id_comic);
+            return view('admin.pages.comics.edit',compact('comic','genres','comic_genres')); 
+        } catch (\Throwable $th) {
+            //throw $th;
+            dd($th);
+        }
+    }
+
+    public function update($id_comic, Request $request){
+        try {
+            $update = $this->comic->updateComics($id_comic,$request);
+            return redirect()->route('admin.comics');
+            
+        } catch (\Throwable $th) {
+            dd($th);
         }
     }
 }
