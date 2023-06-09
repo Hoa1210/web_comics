@@ -31,7 +31,9 @@
                         @if(auth()->check())
                         <a href="{{route('users.logout')}}">Đăng xuất</a>
                         @else
-                        <a href="{{route('users.login')}}">Đăng nhập / Đăng ký</a>
+                        <a href="{{route('users.login.view')}}">Đăng nhập</a>
+                        /
+                        <a href="{{route('users.register.view')}}">Đăng ký</a>
                         @endif
                     </li>
                 </ul>

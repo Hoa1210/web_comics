@@ -30,9 +30,9 @@
                         <ul class="post-social-icons list-unstyled text-center">
                             <li class="social-icons-head">Share:</li>
                             <li><a title="Google" href="{{route('auth.redirect','google')}}"><i class="fa-brands fa-google" style="background: #ea4335;"></i></a></li>
-                            <li><a title="Discord" href="#"><i class="fa-brands fa-discord"></i></a></li>
+                            {{-- <li><a title="Discord" href="#"><i class="fa-brands fa-discord"></i></a></li>
                             <li><a title="Facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a title="Twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a title="Twitter" href="#"><i class="fab fa-twitter"></i></a></li> --}}
                         </ul>
                     </div>
                 </form>

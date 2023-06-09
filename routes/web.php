@@ -34,23 +34,28 @@ Route::get('/truyen-tranh/{comic}', [ComicController::class, 'index'])->name('in
 Route::get('/truyen-tranh/{comic}/{chapter}',[ComicController::class, 'chapter'])->name('chapter');
 Route::get('/tim-truyen',[GenreController::class,'index'])->name('genre');
 Route::get('/tim-truyen/{genre}',[GenreController::class,'search'])->name('genre-search');
-Route::get('/login',[LoginController::class,'login'])->name('users.login');
-Route::get('/logout',[LoginController::class,'logout'])->name('users.logout');
 Route::get('/binh-luan',[CommentController::class,'comment'])->name('comment');
 Route::get('/theo-doi',[FarvoriteController::class, 'index'])->name('farvorite');
+
+Route::get('/dang-ky',[LoginController::class, 'viewRegister'])->name('users.register.view');
+Route::post('/dang-ky',[LoginController::class, 'register'])->name('users.register');
+Route::get('/dang-nhap',[LoginController::class,'viewLogin'])->name('users.login.view');
+Route::get('/dang-xuat',[LoginController::class,'logout'])->name('users.logout');
+
 
 Route::group(['prefix'=>'admin'],function (){
     Route::get('/login', [LoginController::class,'loginAdmin'])->name('admin.login');
     Route::post('/login', [LoginController::class,'authAdmin'])->name('admin.auth');
 });
+
 Route::group(['prefix'=>'admin', 'middleware'=>'auth.admin'],function () {
     Route::get('/logout', [LoginController::class,'logoutAdmin'])->name('admin.logout');
 
     Route::get('/home', [HomeAdminController::class, 'index'])->name('admin.home');
 
-    Route::get('/genners', [GenreAdminController::class, 'index'])->name('admin.genres');
-    Route::get('/genners/create', [GenreAdminController::class, 'create'])->name('admin.genres.create');
-    Route::post('/genners', [GenreAdminController::class, 'store'])->name('admin.genres.store');
+    Route::get('/genres', [GenreAdminController::class, 'index'])->name('admin.genres');
+    Route::get('/genres/create', [GenreAdminController::class, 'create'])->name('admin.genres.create');
+    Route::post('/genres', [GenreAdminController::class, 'store'])->name('admin.genres.store');
     Route::delete('/genres/{id_genre}', [GenreAdminController::class, 'delete'])->name('admin.genres.delete');
     Route::get('/genres/{id_genre}/edit', [GenreAdminController::class, 'edit'])->name('admin.genres.edit');
     Route::put('/genres/{id_genre}', [GenreAdminController::class, 'update'])->name('admin.genres.update');
@@ -62,8 +67,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth.admin'],function () {
     Route::get('/comics/{id_comic}/edit', [ComicAdminController::class, 'edit'])->name('admin.comics.edit');
     Route::put('comics/{id_comic}', [ComicAdminController::class,'update'])->name('admin.comics.update');
 
-    Route::get('/them-chapter', [ChapterAdminController::class, 'create'])->name('admin.chapter.create');
-    Route::post('/them-chapter', [ChapterAdminController::class, 'store'])->name('admin.chapter.store');
+    Route::get('/chapters/create', [ChapterAdminController::class, 'create'])->name('admin.chapter.create');
+    Route::post('/chapters', [ChapterAdminController::class, 'store'])->name('admin.chapter.store');
 });
 
 Route::get('/auth/redirect/{provider}', function ($provider) {

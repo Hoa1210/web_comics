@@ -4487,3 +4487,7 @@ list-img {
 .breadcrumb-item.active a{
   color: #6c757d !important;
 }
+
+.error {
+  color: #ff0000;
+}
