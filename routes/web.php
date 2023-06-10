@@ -40,6 +40,7 @@ Route::get('/theo-doi',[FarvoriteController::class, 'index'])->name('farvorite')
 Route::get('/dang-ky',[LoginController::class, 'viewRegister'])->name('users.register.view');
 Route::post('/dang-ky',[LoginController::class, 'register'])->name('users.register');
 Route::get('/dang-nhap',[LoginController::class,'viewLogin'])->name('users.login.view');
+Route::post('/dang-nhap', [LoginController::class, 'login'])->name('users.login');
 Route::get('/dang-xuat',[LoginController::class,'logout'])->name('users.logout');
 
 

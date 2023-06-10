@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Client\LoginRequest;
 use App\Http\Requests\Client\RegisterReqest;
 use App\Models\Admin;
 use App\Models\User;
@@ -28,6 +29,20 @@ class LoginController extends Controller
 
     public function viewLogin(){
         return view('client.auth.login');
+    }
+
+    public function login(LoginRequest $request){
+        $user = User::where('email',$request->email)->first();
+        if($user && Hash::check($request->password, $user->password)){
+            if($request->remember_account == true){
+                auth('user')->login($user, $remember = true);
+            }else{
+                auth('user')->login($user, $remember = false);
+            }
+            return redirect()->route('home');
+        }else{
+            return redirect()->route('users.login.view')->with('error', 'Mật khẩu không đúng!!');
+        }
     }
 
     public function logout(){
