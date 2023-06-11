@@ -322,21 +322,21 @@ $(document).ready(function () {
 
         window.location.href = url;
     });
-    $("#btn-cmt").click(function(e){
+    $("#btn-cmt").click(function (e) {
         e.preventDefault();
         $.ajax({
-            type: 'GET',
-            url: '/binh-luan',
+            type: "GET",
+            url: "/binh-luan",
             data: $("#form-cmt").serialize(),
-            success: function(data){
+            success: function (data) {
                 $("#comment").val("");
                 $("#list-cmt").prepend(renderCOmmentHTML(data));
-            }
+            },
         });
     });
 
-    function renderCOmmentHTML(data){
-        var date = moment(data.created_at).utc().format('YYYY-MM-DD hh:mm:ss')
+    function renderCOmmentHTML(data) {
+        var date = moment(data.created_at).utc().format("YYYY-MM-DD hh:mm:ss");
         return `<li class="single_comment_area">
         <!-- Comment Content -->
         <div class="comment-content d-flex">
@@ -356,19 +356,81 @@ $(document).ready(function () {
     </li>`;
     }
 
-    $("#flow-comics").on('click', function(){
+    $("#flow-comics").on("click", function () {
         $.ajax({
             url: location.href,
             type: "GET",
             data: "farvorites",
-            success: function(data){
+            success: function (data) {
                 console.log(data);
-                if(data == "delete"){
+                if (data == "delete") {
                     $("#flow-comics").val("Theo dõi");
-                }else{
+                } else {
                     $("#flow-comics").val("Đang theo dõi");
                 }
-            }
+            },
         });
     });
+
+    function changKeyWordToSlug(keywords) {
+        //Lấy text từ thẻ input title
+        keywords = keywords.toLowerCase();
+        //Đổi ký tự có dấu thành không dấu
+        keywords = keywords.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, "a");
+        keywords = keywords.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, "e");
+        keywords = keywords.replace(/i|í|ì|ỉ|ĩ|ị/gi, "i");
+        keywords = keywords.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, "o");
+        keywords = keywords.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, "u");
+        keywords = keywords.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, "y");
+        keywords = keywords.replace(/đ/gi, "d");
+        //Xóa các ký tự đặt biệt
+        keywords = keywords.replace(
+            /\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi,
+            ""
+        );
+        //Đổi khoảng trắng thành ký tự gạch ngang
+        keywords = keywords.replace(/ /gi, "-");
+        //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
+        //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
+        keywords = keywords.replace(/\-\-\-\-\-/gi, "-");
+        keywords = keywords.replace(/\-\-\-\-/gi, "-");
+        keywords = keywords.replace(/\-\-\-/gi, "-");
+        keywords = keywords.replace(/\-\-/gi, "-");
+        //Xóa các ký tự gạch ngang ở đầu và cuối
+        keywords = "@" + keywords + "@";
+        keywords = keywords.replace(/\@\-|\-\@|\@/gi, "");
+        //In keywords ra textbox có id “keywords”
+        return keywords;
+    }
+
+    $("#search").keyup(function () {
+        var keySearch = changKeyWordToSlug($("#search").val());
+
+        $.ajax({
+            url: "/tim-kiem",
+            type: "GET",
+            data: { keywords: keySearch },
+            // dataType: 'json',
+            success: function (response) {
+                console.log(response);
+                var searchResultsDiv = $("#list-comics");
+                searchResultsDiv.empty();
+
+                if (response.length > 0) {
+                    $.each(response, function (index, data) {
+                        searchResultsDiv.append(renderHTMLComicSearch(data));
+                    });
+                } else {
+                    searchResultsDiv.append("<p>No results found.</p>");
+                }
+            },
+        });
+    });
+
+    function renderHTMLComicSearch(data) {
+        return `<a class="comic" href="/truyen-tranh/${data.slug}">
+                    <img src="${window.location.origin + '/' +data.img_path.replace('public', 'storage')}" alt="" width="100">
+                    <p>${data.name}</p>
+                </a>`;
+    }
 });

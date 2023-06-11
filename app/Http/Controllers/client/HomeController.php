@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
-use App\Models\Comics;
 use App\Service\ComicService;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -26,6 +25,14 @@ class HomeController extends Controller
         // dd($comics);
         
         return view('client.pages.home.home',compact('comics'));
+    }
+
+
+    public function search(Request $request){
+            $keywords = $request->keywords;
+            $comic = $this->comic->searchComicBySlug($keywords);
+
+            return response()->json($comic);
     }
 
 }

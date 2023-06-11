@@ -36,6 +36,7 @@ Route::get('/tim-truyen',[GenreController::class,'index'])->name('genre');
 Route::get('/tim-truyen/{genre}',[GenreController::class,'search'])->name('genre-search');
 Route::get('/binh-luan',[CommentController::class,'comment'])->name('comment');
 Route::get('/theo-doi',[FarvoriteController::class, 'index'])->name('farvorite');
+Route::get('/tim-kiem',[HomeController::class, 'search'])->name('search');
 
 Route::get('/dang-ky',[LoginController::class, 'viewRegister'])->name('users.register.view');
 Route::post('/dang-ky',[LoginController::class, 'register'])->name('users.register');

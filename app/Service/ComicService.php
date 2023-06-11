@@ -131,4 +131,8 @@ class ComicService {
         return $this->comic_genre->where('comic_id','=',$id)->get();
     }
 
+    public function searchComicBySlug($keywords){
+        return $this->comics->where('is_public','=',ComicService::PUBLIC)->where('slug','like', '%' .$keywords.'%')->get();
+    }
+
 }
