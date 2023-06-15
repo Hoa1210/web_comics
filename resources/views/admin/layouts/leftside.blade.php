@@ -69,6 +69,19 @@
                     </ul>
                 </div>
             </li>
+            <li class="side-nav-item ">
+                <a data-bs-toggle="collapse" href="#users" aria-expanded="false" aria-controls="users" class="side-nav-link">
+                    <i class="uil uil-tachometer-fast"></i> 
+                    <span> Tài khoản </span>
+                </a>
+                <div class="collapse" id="users">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="{{route('admin.users')}}" >Danh sách tài khoản</a>
+                        </li> 
+                    </ul>
+                </div>
+            </li>
         </ul>
         <div class="clearfix"></div>
     </div>

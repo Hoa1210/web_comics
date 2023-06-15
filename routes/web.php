@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\GenreAdminController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\HomeAdminController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\SocicalController;
 use App\Http\Controllers\client\HomeController;
@@ -71,6 +72,11 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth.admin'],function () {
 
     Route::get('/chapters/create', [ChapterAdminController::class, 'create'])->name('admin.chapter.create');
     Route::post('/chapters', [ChapterAdminController::class, 'store'])->name('admin.chapter.store');
+
+
+    Route::get('/users', [UserController::class, 'index'])->name('admin.users');
+    Route::get('/users/{user_id}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
+    Route::delete('/users/{user_id}', [UserController::class, 'delete'])->name('admin.users.delete');
 });
 
 Route::get('/auth/redirect/{provider}', function ($provider) {
