@@ -27,7 +27,7 @@
                 <img src="{{asset('images/client/logo/icon-close.png')}}" alt="CLOSE">
             </button>
 
-            <form action="{{route('search')}}" id="liveSearch" method="GET"  class="wrap-search-header flex-w p-l-15">
+            <form action="#" id="liveSearch" method="GET"  class="wrap-search-header flex-w p-l-15">
                 <button class="flex-c-m trans-04">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>

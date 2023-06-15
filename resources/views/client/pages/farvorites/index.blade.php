@@ -3,6 +3,12 @@
 @section('content')
 <section class="bg3 p-t-23 p-b-100 p-t-100">
     <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <h2 class="section-title">Theo dõi</h2>
+                <h3 class="section-sub-title">Truyện tranh theo dõi</h3>
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="row">

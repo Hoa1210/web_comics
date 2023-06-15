@@ -403,6 +403,9 @@ $(document).ready(function () {
         return keywords;
     }
 
+    $('#liveSearch').on('submit', function(e){
+        e.preventDefault();
+    })
     $("#search").keyup(function () {
         var keySearch = changKeyWordToSlug($("#search").val());
 
