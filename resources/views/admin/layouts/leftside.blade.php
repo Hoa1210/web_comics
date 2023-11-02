@@ -79,6 +79,9 @@
                         <li>
                             <a href="{{route('admin.users')}}" >Danh sách tài khoản</a>
                         </li> 
+                        <li>
+                            <a href="{{route('admin.users.create')}}" >Thêm tài khoản</a>
+                        </li> 
                     </ul>
                 </div>
             </li>

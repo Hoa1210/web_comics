@@ -304,16 +304,6 @@ jQuery(function ($) {
         }
     });
 
-    // magnificPopup
-    $(function () {
-        $(".iframe-link").magnificPopup({
-            type: "iframe",
-        });
-    });
-
-    // parallax
-    $(".parallax-window").parallax();
-    $(".parallax-window2").parallax();
 });
 
 $(document).ready(function () {

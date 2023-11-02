@@ -75,6 +75,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth.admin'],function () {
 
 
     Route::get('/users', [UserController::class, 'index'])->name('admin.users');
+    Route::get('/users/create', [UserController::class, 'create'])->name('admin.users.create');
+    Route::post('/users', [UserController::class, 'store'])->name('admin.users.store');
     Route::get('/users/{user_id}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
     Route::delete('/users/{user_id}', [UserController::class, 'delete'])->name('admin.users.delete');
 });

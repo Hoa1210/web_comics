@@ -34,59 +34,28 @@
   ================================================== -->
 
   <!-- initialize jQuery Library -->
-  <script src="{{asset('vendor/jQuery/jquery.min.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- Bootstrap jQuery -->
-  <script src="{{asset('vendor/bootstrap/bootstrap.min.js')}}" defer></script>
-  <!-- Slick Carousel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/js/bootstrap.min.js" integrity="sha512-8qmis31OQi6hIRgvkht0s6mCOittjMa9GMqtK9hes5iEQBQE/Ca6yGE5FsW36vyipGoWQswBj/QBm2JR086Rkw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Slick Carousel --> 
   <script src="{{asset('vendor/slick/slick.min.js')}}"></script>
   <script src="{{asset('vendor/slick/slick-animation.min.js')}}"></script>
-  <!-- FontAwesome -->
-  <script src="{{asset('vendor/fontawesome/FontAwesome.js')}}"></script>
-  <!-- parallax -->
-  <script src="{{asset('vendor/parallax/parallax.min.js')}}"></script>
-  <!-- MagnificPopup -->
-  <script src="{{asset('vendor/MagnificPopup/jquery.magnific-popup.min.js')}}"></script>
-  <!-- demoValidation -->
-  <script src="{{asset('vendor/demoValidation/xvalidation.js')}}"></script>
-  <script>
-    $(document).ready(function () {
-      $("#form").xvalidation({
-        theme: "materialize"
-      });
-      $("#form").submit(function (evt) {
-        evt.preventDefault();
-        evt.stopPropagation();
-        if ($("#form").data().xvalidation.methods.validate()) {
-          swal("Thanks!", "Sign UP Done", "success");
-        }
-        return false;
-      });
-    });
-  </script>
   <!-- acmeticker -->
   <script src="{{asset('vendor/acmeticker/acmeticker.min.js')}}"></script>
   <!-- acmeticker active code -->
   <script>
-    jQuery(document).ready(function ($) {
+    $(document).ready(function ($) {
       $('.my-news-ticker').AcmeTicker({
         type: 'marquee',
-        /*horizontal/horizontal/Marquee/type*/
         direction: 'left',
-        /*up/down/left/right*/
         speed: 0.09,
-        /*true/false/number*/
-        /*For vertical/horizontal 600*/
-        /*For marquee 0.05*/
-        /*For typewriter 50*/
         controls: {
           toggle: $('.acme-news-ticker-pause'),
-          /*Can be used for horizontal/horizontal/typewriter*/
-          /*not work for marquee*/
         }
       });
     })
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
+  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>  --}}
   <script src="{{asset('js/client/script.js')}}"></script>
 
 </body>

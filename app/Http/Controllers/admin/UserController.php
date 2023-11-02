@@ -18,6 +18,14 @@ class UserController extends Controller
         return view('admin.pages.users.list', compact('users'));
     }
 
+    public function create(){
+        return view('admin.pages.users.create');
+    }
+
+    public function store(){
+        
+    }
+    
     public function edit($user_id){
 
     }
@@ -25,4 +33,5 @@ class UserController extends Controller
     public function delete($user_id){
         
     }
+
 }
